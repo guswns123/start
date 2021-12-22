@@ -3,3 +3,8 @@ Real/.vs/Real/v15/.suo
 *.DS_Store
 *.lock
 *.exe
+*.manifest
+*.ide
+*.ide
+Real/.vs/Real/v15/Server/sqlite3/storage.ide
+*.ide-wal

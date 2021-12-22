@@ -21,9 +21,40 @@ namespace Real
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        ScaleTransform scale = new ScaleTransform();
+        double orginalWidth, originalHeight;
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += new RoutedEventHandler(MainWindow_Loaded);
         }
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            orginalWidth = this.Width;
+            originalHeight = this.Height;
+
+            if (this.WindowState == WindowState.Maximized)
+            {
+                ChangeSize(this.ActualWidth, this.ActualHeight);
+            }
+
+            this.SizeChanged += new SizeChangedEventHandler(Window1_SizeChanged);
+        }
+        void Window1_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ChangeSize(e.NewSize.Width, e.NewSize.Height);
+        }
+        private void ChangeSize(double width, double height)
+        {
+            scale.ScaleX = width / orginalWidth;
+            scale.ScaleY = height / originalHeight;
+
+            FrameworkElement rootElement = this.Content as FrameworkElement;
+
+            rootElement.LayoutTransform = scale;
+        }
+ 
+
     }
 }
