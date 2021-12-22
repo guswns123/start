@@ -12,6 +12,25 @@ using System.Windows.Navigation;
 
 namespace Real
 {
+    static class ChangeEdid
+    {
+        public static int[,] resolution = new int[10, 8];
+        public static long[] pi = new long[10];
+        public static int[] index = new int[10];
+        public static int countm = 0;
+        public static string[] read = new string[5];
+        public static int des = 0;
+        public static int[] de = new int[5];
+        public static string dess = "";
+        public static string[] proprety = new string[20];
+        public static int dtd = 0;
+    }
+    static class Global
+    {
+        public static string EDID; // wirte EDID value
+        public static int length = 0; // EDID length
+        public static string PreventBack = "";
+    }
     class CheckSums : converter
     {
         public string SortsStr;
@@ -51,26 +70,7 @@ namespace Real
             SortsStr = check.str;
         }
     }
-    public static class ChangeEdid
-    {
-        public static int[,] resolution = new int[10, 8];
-        public static long[] pi = new long[10];
-        public static int[] index = new int[10];
-        public static int countm = 0;
-        public static string[] read = new string[5];
-        public static int des = 0;
-        public static int[] de = new int[5];
-        public static string dess = "";
-        public static string[] proprety = new string[20];
-        public static int dtd = 0;
-    }
-    public static class Global
-    {
-        public static string EDID; // wirte EDID value
-        public static int length = 0; // EDID length
-        public static string PreventBack = "";
-    }
-    public class resoution
+    class resoution
     {
         public char ms_ms = ' ';
         public char ms = ' ';
@@ -158,7 +158,7 @@ namespace Real
             }
         }
     }
-    public class fileroad
+    class fileroad
     {
         public string arr = "";
         public string n = "";
@@ -258,7 +258,7 @@ namespace Real
         }
 
     }
-    public class monitor
+    class monitor
     {
         public monitor() { }
         public monitor(string name) { this.Name = name; }
@@ -312,7 +312,7 @@ namespace Real
             return m;
         }
     }
-    public class Namechanger
+    class Namechanger
     {
         public string edidcn = "";
         int count = 0;

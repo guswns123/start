@@ -465,9 +465,13 @@ namespace Real
                             Description[i, 0] = "Unspecified text : " + Description[i, 0];
                         else if (imformation16[115 + (i * Constants.m) + p] == 'C')
                         {
-                            ChangeEdid.des++;
-                            ChangeEdid.de[ChangeEdid.des - 1] = 108 + (i * Constants.m) + p;
-                            ChangeEdid.dess += Description[i, 0] + " ";
+                            try
+                            {
+                                ChangeEdid.des++;
+                                ChangeEdid.de[ChangeEdid.des - 1] = 108 + (i * Constants.m) + p;
+                                ChangeEdid.dess += Description[i, 0] + " ";
+                            }
+                            catch { }
                             Description[i, 0] = "Display name : " + Description[i, 0];
                         }
                     }
@@ -755,17 +759,21 @@ namespace Real
                     Vertical_Border = (imformation10[140 + (i * Constants.m) + p] * 16) + imformation10[141 + (i * Constants.m) + p];
 
                     ////need change DTB
-                    ChangeEdid.dtd++;
-                    ChangeEdid.index[ChangeEdid.dtd - 1] = 108 + (i * Constants.m) + p;
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 0] = Horizontal_Sync_Pulse;
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 1] = Horizontal_Blanking - (Horizontal_Sync_Pulse + Horizontal_Sync_Offset);
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 2] = Horizontal_Active;
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 3] = Horizontal_Sync_Offset;
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 4] = Vertical_Sync_Pulse;
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 5] = Vertical_Blanking - (Vertical_Sync_Pulse + Vertical_Sync_Offset);
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 6] = Vertical_Active;
-                    ChangeEdid.resolution[ChangeEdid.dtd - 1, 7] = Vertical_Sync_Offset;
-                    ChangeEdid.pi[ChangeEdid.dtd - 1] = Convert.ToInt64(imformation2[110 + (i * Constants.m) + p] + imformation2[111 + (i * Constants.m) + p] + imformation2[108 + (i * Constants.m) + p] + imformation2[109 + (i * Constants.m) + p], 2);
+                    try
+                    {
+                        ChangeEdid.dtd++;
+                        ChangeEdid.index[ChangeEdid.dtd - 1] = 108 + (i * Constants.m) + p;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 0] = Horizontal_Sync_Pulse;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 1] = Horizontal_Blanking - (Horizontal_Sync_Pulse + Horizontal_Sync_Offset);
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 2] = Horizontal_Active;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 3] = Horizontal_Sync_Offset;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 4] = Vertical_Sync_Pulse;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 5] = Vertical_Blanking - (Vertical_Sync_Pulse + Vertical_Sync_Offset);
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 6] = Vertical_Active;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 7] = Vertical_Sync_Offset;
+                        ChangeEdid.pi[ChangeEdid.dtd - 1] = Convert.ToInt64(imformation2[110 + (i * Constants.m) + p] + imformation2[111 + (i * Constants.m) + p] + imformation2[108 + (i * Constants.m) + p] + imformation2[109 + (i * Constants.m) + p], 2);
+                    }
+                    catch { }
                     ///
 
                     if (imformation10[142 + (i * Constants.m) + p] >= 8)
