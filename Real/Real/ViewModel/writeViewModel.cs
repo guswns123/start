@@ -5,19 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Real.Model;
 namespace Real.ViewModel
 {
     class writeViewModel : Notifier
     {
+        public writeViewModel()
+        {
+            FileName = "EDID";
+        }
+        EDIDModel write = new EDIDModel();
         public string EDID
         {
             get { return Global.EDID; }
         }
-        ICommand path;
         public ICommand Path
         {
-            get { return (this.path) ?? (this.path = new DelegateCommand(PATH)); }
+            get { return (this.write.writepath) ?? (this.write.writepath = new DelegateCommand(PATH)); }
 
         }
         void PATH()
@@ -27,58 +31,55 @@ namespace Real.ViewModel
             dialog.ShowDialog();
             PathName = dialog.FileName;
         }
-        string pathname;
         public string PathName
         {
-            get { return pathname; }
+            get { return write.pathname; }
             set
             {
-                pathname = value;
+                write.pathname = value;
                 OnPropertyChenaged("PathName");
             }
         }
-        bool? txt;
         public bool? TXT
         {
             set
             {
-                txt = value;
+                write.txt = value;
                 OnPropertyChenaged("TXT");
             }
         }
-        bool? bin;
         public bool? BIN
         {
             set
             {
-                bin = value;
+                write.bin = value;
                 OnPropertyChenaged("BIN");
             }
         }
-        string filename = "edid";
         public string FileName
         {
-            get { return filename; }
-            set { filename = value; }
+            get;
+            set;
         }
-        ICommand savefile;
         public ICommand SaveFile
         {
-            get { return (this.savefile) ?? (this.savefile = new DelegateCommand(savefiles)); }
+            get { return (this.write.savefile) ?? (this.write.savefile = new DelegateCommand(savefiles)); }
 
         }
         void savefiles()
         {
-            if (txt == true || bin == true)
+            if (write.txt == true || write.bin == true)
             {
                 string edid = Global.EDID;
                 Global.EDID = "";
-                string p = pathname + "\\" + filename;
-                fileroad fileroad = new fileroad(txt, bin, p, edid);
+                string p = write.pathname + "\\" + FileName;
+                fileroad fileroad = new fileroad(write.txt, write.bin, p, edid);
             }
             else
                 System.Windows.MessageBox.Show("Don't Select File Extension");
         }
+
+
 
 
     }

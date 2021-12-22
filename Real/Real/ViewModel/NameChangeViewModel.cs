@@ -4,28 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Real.Model;
 namespace Real.ViewModel
 {
     class NameChangeViewModel : Notifier
     {
+        EDIDModel NameChange = new EDIDModel();
         public string BName
         {
             get { return ChangeEdid.dess; }
         }
-        string aname;
         public string AName
         {
             set
             {
-                aname = value;
+                NameChange.aname = value;
                 OnPropertyChenaged("AName");
             }
         }
-        ICommand changename;
         public ICommand ChangeName
         {
-            get { return (this.changename) ?? (this.changename = new DelegateCommand(Name)); }
+            get { return (this.NameChange.changename) ?? (this.NameChange.changename = new DelegateCommand(Name)); }
 
         }
         void Name()
@@ -34,11 +33,11 @@ namespace Real.ViewModel
             {
                 sort sort = new sort(Global.EDID);
                 char[] arr16 = sort.strc;
-                if (aname.Length > 13)
+                if (NameChange.aname.Length > 13)
                 {
-                    aname = null;
+                    NameChange.aname = null;
                 }
-                    byte[] arr_byteStr = Encoding.Default.GetBytes(aname);
+                    byte[] arr_byteStr = Encoding.Default.GetBytes(NameChange.aname);
                     Namechanger name = new Namechanger(arr16, arr_byteStr);
                     CheckSums checksums = new CheckSums(name.edidcn);
                     Global.EDID = checksums.SortsStr;

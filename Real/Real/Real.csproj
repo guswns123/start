@@ -100,6 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\EDIDModel.cs" />
     <Compile Include="ViewModel\NameChangeViewModel.cs" />
     <Compile Include="change.xaml.cs">
       <DependentUpon>change.xaml</DependentUpon>
@@ -201,5 +202,6 @@
   <ItemGroup>
     <Resource Include="EDIDIcon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

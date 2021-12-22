@@ -8,12 +8,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-
+using Real.Model;
 namespace Real.menu
 {
     public class menuViewModel : Notifier
     {
-
+        EDIDModel menu = new EDIDModel();
         public menuViewModel()
         {
             Initialization initialization = new Initialization();
@@ -21,10 +21,10 @@ namespace Real.menu
                  Edid = Global.EDID;
         }
 
-        ICommand btnfile;
+
         public ICommand BtnFile
         {
-            get { return (this.btnfile) ?? (this.btnfile = new DelegateCommand(File)); }
+            get { return (this.menu.btnfile) ?? (this.menu.btnfile = new DelegateCommand(File)); }
 
         }
         void File()
@@ -41,29 +41,26 @@ namespace Real.menu
             }
         }
 
-        string edid;
-        string sorts;
         public string Edid
         {
-            get { return edid; }
+            get { return menu.edid; }
             set
             {
-                sorts = value;
-                sort sort = new sort(sorts);
+                menu.sorts = value;
+                sort sort = new sort(menu.sorts);
                 Global.length = sort.strr.Length;
-                CheckSums checkSums = new CheckSums(sorts);
-                edid = checkSums.SortsStr;
+                CheckSums checkSums = new CheckSums(menu.sorts);
+                menu.edid = checkSums.SortsStr;
                 OnPropertyChenaged("Edid");
                 OnPathChanged();
             }
         }
-        string path = "values";
         public string Path
         {
-            get { return path; }
+            get { return menu.path; }
             set
             {
-                path = value;
+                menu.path = value;
                 OnPropertyChenaged("Path");
             }
         }
@@ -74,7 +71,7 @@ namespace Real.menu
             Global.length = sort.strr.Length;
             EdidPath edidPath = new EdidPath(Edid);
             Path = edidPath.Pather;
-            Global.EDID = edid;
+            Global.EDID = menu.edid;
         }
 
     }

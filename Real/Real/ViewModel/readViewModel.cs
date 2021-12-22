@@ -4,34 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using Real.Model;
 namespace Real.ViewModel
 {
     class readViewModel : Notifier
     {
+        EDIDModel read = new EDIDModel();
         public readViewModel()
         {
             
         }
-        List<monitor> m = monitor.Monitor();
+
         public List<monitor> ListMonitor
         { 
             get
             {
-                return m;
+                return read.m;
             }
             set
             {
-                m = value;
                 OnPropertyChenaged("ListBoxItem");
             }
         }
-        int index;
         public int IndexMonitor
         {
             set
             {
-                index = value;
+                read.indexmonitor = value;
                 OnPropertyChenaged("IndexMonitor");
                 OnIndexChanged();
             }
@@ -39,28 +38,26 @@ namespace Real.ViewModel
 
         void OnIndexChanged()
         {
-            ReadEdid = ChangeEdid.read[index];
+            ReadEdid = ChangeEdid.read[read.indexmonitor];
         }
-        string edid;
         public string ReadEdid
         {
-            get { return edid; }
+            get { return read.readedid; }
             set
             {
-                edid = value;
+                read.readedid = value;
                 OnPropertyChenaged("ReadEdid");
             }
         }
 
-        ICommand selectedid;
         public ICommand SelectEdid
-        {
-            get { return (this.selectedid) ?? (this.selectedid = new DelegateCommand(selected)); }
+        {         
+            get { return (this.read.selectedid) ?? (this.read.selectedid = new DelegateCommand(selected)); }
 
         }
         void selected()
         {
-            Global.EDID = edid;
+            Global.EDID = read.readedid;
         }
 
 

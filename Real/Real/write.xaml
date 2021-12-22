@@ -13,7 +13,6 @@
 
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="328" Margin="13,43,0,0" TextWrapping="Wrap" Text="{Binding EDID, Mode=OneWay}" VerticalAlignment="Top" Width="388" IsReadOnly="True" x:Name="edid" FontFamily="Consolas news"/>
-        <Button Content="Save File" HorizontalAlignment="Left" Height="49" Margin="418,321,0,0" VerticalAlignment="Top" Width="347" Click="Button_Click_1" Command="{Binding SaveFile}"/>
 
         <TextBox HorizontalAlignment="Left" Height="55" Margin="418,77,0,0" TextWrapping="Wrap" Text="{Binding PathName}" VerticalAlignment="Top" Width="217" x:Name="path" IsReadOnly="True"/>
         <Button Content="Path" HorizontalAlignment="Left" Height="55" Margin="654,77,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" x:Name="path_b" Command="{Binding Path}"/>
@@ -21,6 +20,10 @@
         <TextBlock HorizontalAlignment="Left" Height="27" Margin="418,206,0,0" TextWrapping="Wrap" Text="Save File Name" VerticalAlignment="Top" Width="347" x:Name="la" />
         <RadioButton Content="txt" HorizontalAlignment="Left" Height="17" Margin="418,158,0,0" VerticalAlignment="Top" Width="91" GroupName="WriteType" x:Name="Txt" IsChecked="{Binding TXT}" />
         <RadioButton Content="bin" HorizontalAlignment="Left" Height="17" Margin="509,158,0,0" VerticalAlignment="Top" Width="91" GroupName="WriteType" x:Name="Bin" IsChecked="{Binding BIN}"/>
+        <StackPanel HorizontalAlignment="Left" Height="86" Margin="418,306,0,0" VerticalAlignment="Top" Width="356" Orientation="Horizontal" >
+            <Button Content="Save File" Margin="10" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="229" Click="Button_Click_1" Command="{Binding SaveFile}"/>
+            <Button Content="Finish" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Height="49" Click="Button_Click_2"/>
+        </StackPanel>
 
 
 

@@ -29,15 +29,14 @@ namespace Real
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Thread.Sleep(500);
-            if (Global.PreventBack != "On")
-            {
-                NavigationService.Navigate
-                (
-                    new Uri("/menu.xaml", UriKind.Relative)
-                );
-            }
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate
+            (
+                new Uri("/menu.xaml", UriKind.Relative)
+            );
+        }
     }
 }
