@@ -27,9 +27,9 @@ namespace Real
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += new RoutedEventHandler(MainWindow_Loaded);
+            Loaded += new RoutedEventHandler(MainWindowLoaded);
         }
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
             orginalWidth = this.Width;
             originalHeight = this.Height;
@@ -39,9 +39,9 @@ namespace Real
                 ChangeSize(this.ActualWidth, this.ActualHeight);
             }
 
-            this.SizeChanged += new SizeChangedEventHandler(Window1_SizeChanged);
+            this.SizeChanged += new SizeChangedEventHandler(MainWindowSizeChanged);
         }
-        void Window1_SizeChanged(object sender, SizeChangedEventArgs e)
+        void MainWindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
             ChangeSize(e.NewSize.Width, e.NewSize.Height);
         }

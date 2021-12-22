@@ -8,3 +8,4 @@ Real/.vs/Real/v15/.suo
 *.ide
 Real/.vs/Real/v15/Server/sqlite3/storage.ide
 *.ide-wal
+*.ide-shm
