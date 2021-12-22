@@ -709,7 +709,7 @@ namespace Real
                         p = p + (jumpn * 256 - 108 + (i * Constants.m) + p);
                         jumpi = 108 + (i * Constants.m) + p;
                     }
-                   FinallyDescription += "\nManufacturer reserved descriptors.\n";
+                   FinallyDescription +=  "\nManufacturer reserved descriptors.\n" ;
                 }
                 else if ((imformation10[108 + (i * Constants.m) + p] + imformation10[109 + (i * Constants.m) + p]  ////////150 144~9
                     + imformation10[110 + (i * Constants.m) + p] + imformation10[111 + (i * Constants.m) + p] + imformation10[112 + (i * Constants.m) + p] + imformation10[113 + (i * Constants.m) + p]) != 0)
@@ -871,12 +871,15 @@ namespace Real
                     FinallyDescription += dtd;
                 }
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 10; i < 5; i++)
             {
                 for (int j = 0; j < 20; j++)
+                {
                     if (Description[i, j] != null)
                         FinallyDescription += Description[i, j] + "\n";
-                FinallyDescription += "\n";
+                }
+                if(Description[i,0] != null && Description[i,0] != "" )
+                    FinallyDescription += "\n";
             }
             return FinallyDescription;
         }

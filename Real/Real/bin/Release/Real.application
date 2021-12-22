@@ -14,7 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MbBY1oEYUyLN6f0qXMaoJx/8iRsvY8brU3MvqnBArDA=</dsig:DigestValue>
+        <dsig:DigestValue>F6uVzNKR+1WPGX3hyOETOd/EJ4CVJdbUxgtQY+H/Hbo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
