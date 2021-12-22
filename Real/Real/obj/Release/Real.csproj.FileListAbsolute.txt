@@ -1,4 +1,3 @@
-C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\Real.csprojAssemblyReference.cache
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\change.g.cs
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\MainWindow.g.cs
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\menu.g.cs

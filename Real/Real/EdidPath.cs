@@ -460,9 +460,9 @@ namespace Real
                         }
 
                         if (imformation16[115 + (i * Constants.m) + p] == 'F')////151
-                            Description[i, 0] = "Display serial number : " + Description[i, 0];
+                            Description[i, 0] = "Display serial number : " + Description[i, 0] ;
                         else if (imformation16[115 + (i * Constants.m) + p] == 'E')
-                            Description[i, 0] = "Unspecified text : " + Description[i, 0];
+                            Description[i, 0] = "Unspecified text : " + Description[i, 0] ;
                         else if (imformation16[115 + (i * Constants.m) + p] == 'C')
                         {
                             try
@@ -472,7 +472,7 @@ namespace Real
                                 ChangeEdid.dess += Description[i, 0] + " ";
                             }
                             catch { }
-                            Description[i, 0] = "Display name : " + Description[i, 0];
+                            Description[i, 0] = "Display name : " + Description[i, 0] ;
                         }
                     }
                     else if (imformation16[115 + (i * Constants.m) + p] == 'D')                                             //////////////////////////////EDID_Display_Range_Limits start 151
@@ -506,7 +506,7 @@ namespace Real
                             Description[i, 10] = "GTF M value : " + (Convert.ToInt32(imformation2[138 + (i * Constants.m) + p] + imformation2[139 + (i * Constants.m) + p]                     ///////174~5 172 ~3
                                 + imformation2[136 + (i * Constants.m) + p] + imformation2[137 + (i * Constants.m) + p], 2)).ToString();
                             Description[i, 11] = "GTF K value : " + (imformation10[140 + (i * Constants.m) + p] * 10 + imformation10[141 + (i * Constants.m) + p]).ToString();                   ////////176~7
-                            Description[i, 12] = "GTF J value : " + ((float)(imformation10[142 + (i * Constants.m) + p] * 10 + imformation10[143 + (i * Constants.m) + p]) / 2).ToString();      ////////178~9
+                            Description[i, 12] = "GTF J value : " + ((float)(imformation10[142 + (i * Constants.m) + p] * 10 + imformation10[143 + (i * Constants.m) + p]) / 2).ToString() ;      ////////178~9
                         }                                                                             //////////////////////////////////With GTF secondary curve end
                         else if (imformation16[129 + (i * Constants.m)] == '4')                                ////////////////////With CVT support start
                         {
@@ -576,7 +576,7 @@ namespace Real
                                 if (imformation2[140 + (i * Constants.m) + p].Substring(k, 1) == "1")///176
                                     Description[i, 15 + k] = "none" + Description[i, 15 + k];
                             }
-                            Description[i, 20] = (imformation10[142 + (i * Constants.m) + p] * 16 + imformation10[143 + (i * Constants.m) + p]).ToString();////178 179
+                            Description[i, 20] = (imformation10[142 + (i * Constants.m) + p] * 16 + imformation10[143 + (i * Constants.m) + p]).ToString() + "\n";////178 179
 
                         }                                                                            /////////////////////////////With CVT support end
                     }                                                                               ///////////////////////////////EDID_Display_Range_Limits end
@@ -871,14 +871,14 @@ namespace Real
                     FinallyDescription += dtd;
                 }
             }
-            for (int i = 10; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 20; j++)
                 {
                     if (Description[i, j] != null)
                         FinallyDescription += Description[i, j] + "\n";
                 }
-                if(Description[i,0] != null && Description[i,0] != "" )
+                if (Description[i, 0] != null)
                     FinallyDescription += "\n";
             }
             return FinallyDescription;
