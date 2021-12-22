@@ -29,3 +29,4 @@ C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\Real.application
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\Real.csproj.CopyComplete
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\Real.exe
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\Real.pdb
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\Real.csprojAssemblyReference.cache

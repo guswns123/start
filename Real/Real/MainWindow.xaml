@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Real"
         mc:Ignorable="d"
-        Title="edid" Height="450" Width="800">
+        Title="EDID Reader" Height="450" Width="800">
 
     <Grid>
         <Frame Source="/menu.xaml"/>
