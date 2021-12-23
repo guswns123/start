@@ -16,6 +16,8 @@ namespace Real.menu
         EDIDModel menu = new EDIDModel();
         public menuViewModel()
         {
+            if (Global.WirteFlag == "ON")
+                Global.EDID = "";
             Initialization initialization = new Initialization();
             if(Global.EDID != null && Global.EDID != "") 
                  Edid = Global.EDID;

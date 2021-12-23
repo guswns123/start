@@ -21,7 +21,6 @@ namespace Real
     /// </summary>
     public partial class MainWindow : Window
     {
-
         ScaleTransform scale = new ScaleTransform();
         double orginalWidth, originalHeight;
         public MainWindow()

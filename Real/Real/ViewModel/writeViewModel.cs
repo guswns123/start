@@ -70,10 +70,9 @@ namespace Real.ViewModel
         {
             if (write.txt == true || write.bin == true)
             {
-                string edid = Global.EDID;
-                Global.EDID = "";
                 string p = write.pathname + "\\" + FileName;
-                fileroad fileroad = new fileroad(write.txt, write.bin, p, edid);
+                fileroad fileroad = new fileroad(write.txt, write.bin, p, Global.EDID);
+                Global.WirteFlag = "ON";
             }
             else
                 System.Windows.MessageBox.Show("Don't Select File Extension");

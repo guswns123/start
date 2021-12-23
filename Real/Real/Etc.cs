@@ -29,7 +29,7 @@ namespace Real
     {
         public static string EDID; // wirte EDID value
         public static int length = 0; // EDID length
-        public static string PreventBack = "";
+        public static string WirteFlag;
     }
     class CheckSums : converter
     {
@@ -222,25 +222,31 @@ namespace Real
                 else if (Bin == true)
                 {
                     path += ".bin";
-                    sort sort = new sort(edid);
-                    byte[] arr_byteStr = new byte[sort.strr.Length / 2];
-                    for (int i = 0; i < sort.strr.Length; i = i + 2)
+                    if (File.Exists(path))
                     {
-                        arr_byteStr[i / 2] = Convert.ToByte(sort.strr.Substring(i, 2), 16);
+                        System.Windows.MessageBox.Show("A file with the same name exists in the specified path.");
+                        path = "";
                     }
-                    FileStream fs = File.Open(path, FileMode.Create);
-                    using (BinaryWriter wr = new BinaryWriter(fs, Encoding.UTF7))
+                    else
                     {
-                        foreach (byte b in arr_byteStr)
-                            wr.Write(b);
+                        sort sort = new sort(edid);
+                        byte[] arr_byteStr = new byte[sort.strr.Length / 2];
+                        for (int i = 0; i < sort.strr.Length; i = i + 2)
+                        {
+                            arr_byteStr[i / 2] = Convert.ToByte(sort.strr.Substring(i, 2), 16);
+                        }
+                        FileStream fs = File.Open(path, FileMode.Create);
+                        using (BinaryWriter wr = new BinaryWriter(fs, Encoding.UTF7))
+                        {
+                            foreach (byte b in arr_byteStr)
+                                wr.Write(b);
+                        }
+                        System.Windows.MessageBox.Show("save file success.");
                     }
                 }
-                System.Windows.MessageBox.Show("save file success.");
-                Global.PreventBack = "Off";
             }
             catch
             {
-                Global.PreventBack = "On";
                 System.Windows.MessageBox.Show("save file failing.");
             }
         }
@@ -255,6 +261,7 @@ namespace Real
             ChangeEdid.des = 0;
             ChangeEdid.dess = "";
             ChangeEdid.dtd = 0;
+            Global.WirteFlag = "";
         }
 
     }
@@ -283,6 +290,8 @@ namespace Real
                     {
                         outParams = mo.InvokeMethod("WmiGetMonitorRawEEdidV1Block", inParams, null);
                         uint blktype = Convert.ToUInt16(outParams["BlockType"]);
+
+
                         if ((blktype == 1) || (blktype == 255))
                         {
                             byte[] readbtye = (Byte[])outParams["BlockContent"];

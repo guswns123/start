@@ -879,7 +879,7 @@ namespace Real
                     if (Description[i, j] != null)
                         FinallyDescription += Description[i, j] + "\n";
                 }
-                if (Description[i, 0] != null)
+                if (Description[i, 1] != null)
                     FinallyDescription += "\n";
             }
             return FinallyDescription;
