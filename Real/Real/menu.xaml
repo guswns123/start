@@ -1,5 +1,5 @@
 ﻿<Page x:Class="Real.maue"
-      xmlns:vm ="clr-namespace:Real.menu"
+      xmlns:vm ="clr-namespace:Real.ViewModel"
       xmlns:local="clr-namespace:Real"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

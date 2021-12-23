@@ -19,37 +19,37 @@
 
 
 
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="57,165,0,0" TextWrapping="Wrap" Text="Sync" VerticalAlignment="Top" Width="135" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="22" Margin="600,165,0,0" TextWrapping="Wrap" Text="Back" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="419,165,0,0" TextWrapping="Wrap" Text="Active" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="239,165,0,0" TextWrapping="Wrap" Text="Front" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="57,144,0,0" TextWrapping="Wrap" Text="Sync" VerticalAlignment="Top" Width="135" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="600,144,0,0" TextWrapping="Wrap" Text="Back" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="419,144,0,0" TextWrapping="Wrap" Text="Active" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="239,144,0,0" TextWrapping="Wrap" Text="Front" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
 
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="600,38,0,0" Grid.Row="1" TextWrapping="Wrap" 
-                 Text="{Binding PI ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="134" x:Name="b_pi" />
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="60,110,0,0" TextWrapping="Wrap" 
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="600,12,0,0" Grid.Row="1" TextWrapping="Wrap" 
+                 Text="{Binding PI ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151" x:Name="b_pi" />
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="60,87,0,0" TextWrapping="Wrap" 
                  Text="{Binding h_syns ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_syns" Grid.Row="1" />
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="239,110,0,0" TextWrapping="Wrap" 
-                 Text="{Binding h_front ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="152"  x:Name="b_h_front" Grid.Row="1"  />
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="419,110,0,0" TextWrapping="Wrap" 
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="239,87,0,0" TextWrapping="Wrap" 
+                 Text="{Binding h_front ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_front" Grid.Row="1"  />
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="419,87,0,0" TextWrapping="Wrap" 
                  Text="{Binding h_active ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_active" Grid.Row="1" />
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="600,110,0,0" TextWrapping="Wrap" 
-                 Text="{Binding h_back ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="152"  x:Name="b_h_back" Grid.Row="1" />
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="60,195,0,0" TextWrapping="Wrap" 
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="600,87,0,0" TextWrapping="Wrap" 
+                 Text="{Binding h_back ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_back" Grid.Row="1" />
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="60,175,0,0" TextWrapping="Wrap" 
                  Text="{Binding v_syns ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151" Grid.Row="1"  x:Name="b_v_syns"  />
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="239,195,0,0" TextWrapping="Wrap" 
-                 Text="{Binding v_front ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="152" Grid.Row="1"  x:Name="b_v_front"  />
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="419,195,0,0" TextWrapping="Wrap" 
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="239,175,0,0" TextWrapping="Wrap" 
+                 Text="{Binding v_front ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151" Grid.Row="1"  x:Name="b_v_front"  />
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="419,175,0,0" TextWrapping="Wrap" 
                  Text="{Binding v_active ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151" Grid.Row="1"  x:Name="b_v_active"  />
-        <TextBox HorizontalAlignment="Left" Height="28" Margin="600,195,0,0" TextWrapping="Wrap" 
-                 Text="{Binding v_back ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="152" Grid.Row="1"  x:Name="b_v_back"  />
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="600,175,0,0" TextWrapping="Wrap" 
+                 Text="{Binding v_back ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151" Grid.Row="1"  x:Name="b_v_back"  />
 
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="57,82,0,0" TextWrapping="Wrap" Text="Sync" VerticalAlignment="Top" Width="134" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="24" Margin="600,82,0,0" TextWrapping="Wrap" Text="Back" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="419,82,0,0" TextWrapping="Wrap" Text="Active" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="239,82,0,0" TextWrapping="Wrap" Text="Front" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="51" Margin="18,199,0,0" TextWrapping="Wrap" Text="V" VerticalAlignment="Top" Width="64" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="53" Margin="18,112,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="63" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Height="27" Margin="473,41,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Refresh Rate" VerticalAlignment="Top" Width="122" />
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="57,57,0,0" TextWrapping="Wrap" Text="Sync" VerticalAlignment="Top" Width="134" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="600,57,0,0" TextWrapping="Wrap" Text="Back" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="419,57,0,0" TextWrapping="Wrap" Text="Active" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="239,57,0,0" TextWrapping="Wrap" Text="Front" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="53" Margin="18,179,0,0" TextWrapping="Wrap" Text="V" VerticalAlignment="Top" Width="64" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="55" Margin="18,89,0,0" TextWrapping="Wrap" Text="H" VerticalAlignment="Top" Width="63" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="28" Margin="473,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Refresh Rate" VerticalAlignment="Top" Width="122" />
         <StackPanel HorizontalAlignment="Left" Height="81" Margin="197,7.475,0,0" Grid.Row="2" VerticalAlignment="Top" Width="386" Orientation="Horizontal">
             <Button Margin="20" Content="Change" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="155"  Command="{Binding ChangeEDID}"/>
             <Button Margin="20" Content="finish" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="164" Click="Button_Click_1"/>

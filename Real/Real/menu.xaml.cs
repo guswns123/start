@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Management;
 using System.IO;
-using Real.menu;
+using Real.ViewModel;
 namespace Real
 {
 
