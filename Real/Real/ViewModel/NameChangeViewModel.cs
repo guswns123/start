@@ -36,6 +36,7 @@ namespace Real.ViewModel
                 if (NameChange.aname.Length > 13)
                 {
                     NameChange.aname = null;
+                    System.Windows.MessageBox.Show("Display has max length to 13 words");
                 }
                     byte[] arr_byteStr = Encoding.Default.GetBytes(NameChange.aname);
                     Namechanger name = new Namechanger(arr16, arr_byteStr);

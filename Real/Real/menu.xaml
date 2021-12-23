@@ -21,7 +21,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBox HorizontalAlignment="Left" Height="219" Margin="10,59,0,0" TextWrapping="Wrap" Text="{Binding Edid, Mode=TwoWay}" 
+        <TextBox HorizontalAlignment="Left" Height="219" Margin="10,59,0,0" TextWrapping="Wrap" Text="{Binding Edid, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}" 
                  VerticalAlignment="Top" Width="377" TextChanged="TextBox_TextChanged_1" x:Name="edid" AcceptsReturn="True" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.RowSpan="2" Grid.Column="1" FontFamily="Consolas news" />

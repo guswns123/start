@@ -715,19 +715,19 @@ namespace Real
                     + imformation10[110 + (i * Constants.m) + p] + imformation10[111 + (i * Constants.m) + p] + imformation10[112 + (i * Constants.m) + p] + imformation10[113 + (i * Constants.m) + p]) != 0)
                 {
                     string dtd = "\n";
-                    string Pixel_clock = "";
-                    int Horizontal_Active = 0;
-                    int Horizontal_Blanking = 0;
-                    int Vertical_Active = 0;
-                    int Vertical_Blanking = 0;
-                    int Horizontal_Sync_Offset = 0;
-                    int Horizontal_Sync_Pulse = 0;
-                    int Vertical_Sync_Offset = 0;
-                    int Vertical_Sync_Pulse = 0;
-                    int Horizontal_Display_Size = 0;
-                    int Vertical_Display_Size = 0;
-                    int Horizontal_Border = 0;
-                    int Vertical_Border = 0;
+                    string pixelClock = "";
+                    int horizontalActive = 0;
+                    int horizontalBlanking = 0;
+                    int verticalActive = 0;
+                    int verticalBlanking = 0;
+                    int horizontalSyncOffset = 0;
+                    int horizontalSyncPulse = 0;
+                    int verticalSyncOffset = 0;
+                    int verticalSyncPulse = 0;
+                    int horizontalDisplaySize = 0;
+                    int verticalDisplaySize = 0;
+                    int horizontalBorder = 0;
+                    int verticalBorder = 0;
                     string interlace = "";
                     string stereo = "";
                     string sync_flag = "";
@@ -735,42 +735,42 @@ namespace Real
                     string[] Digital_sync = new string[2];              /*composite mode(0 : Serration 1 : Horizontal sync polarity) 
                                                                   separate mode (0 : Vertical sync polarity 1 : Horizontal sync polarity)*/
 
-                    Pixel_clock = ((float)(Convert.ToInt32(imformation2[110 + (i * Constants.m) + p] + imformation2[111 + (i * Constants.m) + p] + imformation2[108 + (i * Constants.m) + p] + imformation2[109 + (i * Constants.m) + p], 2) * 10000)
+                    pixelClock = ((float)(Convert.ToInt32(imformation2[110 + (i * Constants.m) + p] + imformation2[111 + (i * Constants.m) + p] + imformation2[108 + (i * Constants.m) + p] + imformation2[109 + (i * Constants.m) + p], 2) * 10000)
                         / 1000000).ToString() + "MHz";
                     if (imformation10[110 + (i * Constants.m) + p] + imformation10[111 + (i * Constants.m) + p] + imformation10[108 + (i * Constants.m) + p] + imformation10[109 + (i * Constants.m) + p] == 0)
-                        Pixel_clock = "10KHz";
+                        pixelClock = "10KHz";
 
-                    Horizontal_Active = (imformation10[112 + (i * Constants.m) + p] * 16 + imformation10[113 + (i * Constants.m) + p]) + imformation10[116 + (i * Constants.m) + p] * 256;
-                    Horizontal_Blanking = (imformation10[114 + (i * Constants.m) + p] * 16 + imformation10[115 + (i * Constants.m) + p]) + imformation10[117 + (i * Constants.m) + p] * 256;
+                    horizontalActive = (imformation10[112 + (i * Constants.m) + p] * 16 + imformation10[113 + (i * Constants.m) + p]) + imformation10[116 + (i * Constants.m) + p] * 256;
+                    horizontalBlanking = (imformation10[114 + (i * Constants.m) + p] * 16 + imformation10[115 + (i * Constants.m) + p]) + imformation10[117 + (i * Constants.m) + p] * 256;
 
-                    Vertical_Active = (imformation10[118 + (i * Constants.m) + p] * 16 + imformation10[119 + (i * Constants.m) + p]) + imformation10[122 + (i * Constants.m) + p] * 256;
-                    Vertical_Blanking = (imformation10[120 + (i * Constants.m) + p] * 16 + imformation10[121 + (i * Constants.m) + p]) + imformation10[123 + (i * Constants.m) + p] * 256;
+                    verticalActive = (imformation10[118 + (i * Constants.m) + p] * 16 + imformation10[119 + (i * Constants.m) + p]) + imformation10[122 + (i * Constants.m) + p] * 256;
+                    verticalBlanking = (imformation10[120 + (i * Constants.m) + p] * 16 + imformation10[121 + (i * Constants.m) + p]) + imformation10[123 + (i * Constants.m) + p] * 256;
 
-                    Horizontal_Sync_Offset = (imformation10[124 + (i * Constants.m) + p] * 16 + imformation10[125 + (i * Constants.m) + p]) + Convert.ToInt32(imformation2[130 + (i * Constants.m) + p].Substring(0, 2), 2) * 256;
-                    Horizontal_Sync_Pulse = (imformation10[126 + (i * Constants.m) + p] * 16 + imformation10[127 + (i * Constants.m) + p]) + Convert.ToInt32(imformation2[130 + (i * Constants.m) + p].Substring(2, 2), 2) * 256;
+                    horizontalSyncOffset = (imformation10[124 + (i * Constants.m) + p] * 16 + imformation10[125 + (i * Constants.m) + p]) + Convert.ToInt32(imformation2[130 + (i * Constants.m) + p].Substring(0, 2), 2) * 256;
+                    horizontalSyncPulse = (imformation10[126 + (i * Constants.m) + p] * 16 + imformation10[127 + (i * Constants.m) + p]) + Convert.ToInt32(imformation2[130 + (i * Constants.m) + p].Substring(2, 2), 2) * 256;
 
-                    Vertical_Sync_Offset = imformation10[128 + (i * Constants.m) + p] + Convert.ToInt32(imformation2[131 + (i * Constants.m) + p].Substring(0, 2), 2) * 16;
-                    Vertical_Sync_Pulse = imformation10[129 + (i * Constants.m) + p] + Convert.ToInt32(imformation2[131 + (i * Constants.m) + p].Substring(2, 2), 2) * 16;
+                    verticalSyncOffset = imformation10[128 + (i * Constants.m) + p] + Convert.ToInt32(imformation2[131 + (i * Constants.m) + p].Substring(0, 2), 2) * 16;
+                    verticalSyncPulse = imformation10[129 + (i * Constants.m) + p] + Convert.ToInt32(imformation2[131 + (i * Constants.m) + p].Substring(2, 2), 2) * 16;
 
-                    Horizontal_Display_Size = (imformation10[132 + (i * Constants.m) + p] * 16 + imformation10[133 + (i * Constants.m) + p]) + imformation10[136 + (i * Constants.m) + p] * 256;
-                    Vertical_Display_Size = (imformation10[134 + (i * Constants.m) + p] * 16 + imformation10[135 + (i * Constants.m) + p]) + imformation10[137 + (i * Constants.m) + p] * 256;
+                    horizontalDisplaySize = (imformation10[132 + (i * Constants.m) + p] * 16 + imformation10[133 + (i * Constants.m) + p]) + imformation10[136 + (i * Constants.m) + p] * 256;
+                    verticalDisplaySize = (imformation10[134 + (i * Constants.m) + p] * 16 + imformation10[135 + (i * Constants.m) + p]) + imformation10[137 + (i * Constants.m) + p] * 256;
 
-                    Horizontal_Border = (imformation10[138 + (i * Constants.m) + p] * 16) + imformation10[139 + (i * Constants.m) + p];
-                    Vertical_Border = (imformation10[140 + (i * Constants.m) + p] * 16) + imformation10[141 + (i * Constants.m) + p];
+                    horizontalBorder = (imformation10[138 + (i * Constants.m) + p] * 16) + imformation10[139 + (i * Constants.m) + p];
+                    verticalBorder = (imformation10[140 + (i * Constants.m) + p] * 16) + imformation10[141 + (i * Constants.m) + p];
 
                     ////need change DTB
                     try
                     {
                         ChangeEdid.dtd++;
                         ChangeEdid.index[ChangeEdid.dtd - 1] = 108 + (i * Constants.m) + p;
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 0] = Horizontal_Sync_Pulse;
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 1] = Horizontal_Blanking - (Horizontal_Sync_Pulse + Horizontal_Sync_Offset);
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 2] = Horizontal_Active;
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 3] = Horizontal_Sync_Offset;
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 4] = Vertical_Sync_Pulse;
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 5] = Vertical_Blanking - (Vertical_Sync_Pulse + Vertical_Sync_Offset);
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 6] = Vertical_Active;
-                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 7] = Vertical_Sync_Offset;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 0] = horizontalSyncPulse;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 1] = horizontalBlanking - (horizontalSyncPulse + horizontalSyncOffset);
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 2] = horizontalActive;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 3] = horizontalSyncOffset;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 4] = verticalSyncPulse;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 5] = verticalBlanking  - (verticalSyncPulse + verticalSyncOffset);
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 6] = verticalActive;
+                        ChangeEdid.resolution[ChangeEdid.dtd - 1, 7] = verticalSyncOffset;
                         ChangeEdid.pi[ChangeEdid.dtd - 1] = Convert.ToInt64(imformation2[110 + (i * Constants.m) + p] + imformation2[111 + (i * Constants.m) + p] + imformation2[108 + (i * Constants.m) + p] + imformation2[109 + (i * Constants.m) + p], 2);
                     }
                     catch { }
@@ -846,19 +846,19 @@ namespace Real
 
                     }
                     dtd += "Detailed Timing Descriptor\n";
-                    dtd += "Pixel_clock : " + Pixel_clock + "\n";
-                    dtd += "Horizontal_Active : " + Horizontal_Active + "\n";
-                    dtd += "Horizontal_Blanking : " + Horizontal_Blanking + "\n";
-                    dtd += "Horizontal_Sync_Offset : " + Horizontal_Sync_Offset + "\n";
-                    dtd += "Horizontal_Sync_Pulse : " + Horizontal_Sync_Pulse + "\n";
-                    dtd += "Horizontal image size : " + Horizontal_Display_Size + "\n";
-                    dtd += "Horizontal_Border : " + Horizontal_Border + "\n";
-                    dtd += "Vertical_Active : " + Vertical_Active + "\n";
-                    dtd += "Vertical_Blanking : " + Vertical_Blanking + "\n";
-                    dtd += "Vertical_Sync_Offset : " + Vertical_Sync_Offset + "\n";
-                    dtd += "Vertical_Sync_Pulse : " + Vertical_Sync_Pulse + "\n";
-                    dtd += "Vertical image size : " + Vertical_Display_Size + "\n";
-                    dtd += "Vertical_Border : " + Vertical_Border + "\n";
+                    dtd += "Pixel_clock : " + pixelClock + "\n";
+                    dtd += "Horizontal_Active : " + horizontalActive + "\n";
+                    dtd += "Horizontal_Blanking : " + horizontalBlanking + "\n";
+                    dtd += "Horizontal_Sync_Offset : " + horizontalSyncOffset + "\n";
+                    dtd += "Horizontal_Sync_Pulse : " + horizontalSyncPulse + "\n";
+                    dtd += "Horizontal image size : " + horizontalDisplaySize + "\n";
+                    dtd += "Horizontal_Border : " + horizontalBorder + "\n";
+                    dtd += "Vertical_Active : " + verticalActive + "\n";
+                    dtd += "Vertical_Blanking : " + verticalBlanking + "\n";
+                    dtd += "Vertical_Sync_Offset : " + verticalSyncOffset + "\n";
+                    dtd += "Vertical_Sync_Pulse : " + verticalSyncPulse + "\n";
+                    dtd += "Vertical image size : " + verticalDisplaySize + "\n";
+                    dtd += "Vertical_Border : " + verticalBorder + "\n";
                     dtd += "interface mode : " + interlace + "\n";
                     dtd += "stereo mod : " + stereo + "\n";
                     dtd += sync_flag + "syns \n";
@@ -871,6 +871,7 @@ namespace Real
                     FinallyDescription += dtd;
                 }
             }
+            FinallyDescription += "\n";
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 20; j++)

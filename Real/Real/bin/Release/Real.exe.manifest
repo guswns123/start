@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Real.exe" size="82944">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Real.exe" size="83456">
       <assemblyIdentity name="Real" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>t1Sw23SMkQgFVEnnCyH4rXDixGwlTrqLEsaYAzS29m0=</dsig:DigestValue>
+        <dsig:DigestValue>gfAyxNCerdHsG+MN/qY4qC1RY4npugL16P1whbH9VyE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

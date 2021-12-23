@@ -14,7 +14,7 @@ namespace Real.ViewModel
         public changeViewModel()
         {
             for (int i = 0; i < ChangeEdid.dtd; i++)
-                DTB.Add("DTB" + (i + 1));
+                DTB[i] = ("DTB" + (i + 1));
         }
         public List<string> SelectDTB
         {
@@ -22,12 +22,33 @@ namespace Real.ViewModel
             set {  }
         }
 
+        string AcsllRetrun(string value)
+        {
+            string OnlyNumber = "";
+            byte[] acsll = Encoding.ASCII.GetBytes(value);
+            try
+            {
+                if (48 <= acsll[acsll.Length - 1] && acsll[acsll.Length - 1] <= 57)
+                    OnlyNumber = value;
+                else
+                    OnlyNumber = value.Remove(value.Length - 1, 1);
+            }
+            catch
+            {
+                if (value == "")
+                {
+                    OnlyNumber = value;
+                }
+            }
+            return OnlyNumber;
+        }
+
         public string h_syns
         {
-            get { return Change.hsyns; }
+            get{ return Change.hsyns; }
             set
             {
-                Change.hsyns = value;
+                Change.hsyns = AcsllRetrun(value);
                 OnPropertyChenaged("h_syns");
             }
         }
@@ -36,7 +57,7 @@ namespace Real.ViewModel
             get { return Change.hfront; }
             set
             {
-                Change.hfront = value;
+                Change.hfront = AcsllRetrun(value);
                 OnPropertyChenaged("h_front");
             }
         }
@@ -45,7 +66,7 @@ namespace Real.ViewModel
             get { return Change.hactive; }
             set
             {
-                Change.hactive = value;
+                Change.hactive = AcsllRetrun(value);
                 OnPropertyChenaged("h_active");
             }
         }
@@ -54,7 +75,7 @@ namespace Real.ViewModel
             get { return Change.hback; }
             set
             {
-                Change.hback = value;
+                Change.hback = AcsllRetrun(value);
                 OnPropertyChenaged("h_back");
             }
         }
@@ -63,7 +84,7 @@ namespace Real.ViewModel
             get { return Change.vsyns; }
             set
             {
-                Change.vsyns = value;
+                Change.vsyns = AcsllRetrun(value);
                 OnPropertyChenaged("v_syns");
             }
         }
@@ -72,7 +93,7 @@ namespace Real.ViewModel
             get { return Change.vfront; }
             set
             {
-                Change.vfront = value;
+                Change.vfront = AcsllRetrun(value);
                 OnPropertyChenaged("v_front");
             }
         }
@@ -81,7 +102,7 @@ namespace Real.ViewModel
             get { return Change.vactive; }
             set
             {
-                Change.vactive = value;
+                Change.vactive = AcsllRetrun(value);
                 OnPropertyChenaged("v_active");
             }
         }
@@ -90,7 +111,7 @@ namespace Real.ViewModel
             get { return Change.vback; }
             set
             {
-                Change.vback = value;
+                Change.vback = AcsllRetrun(value);
                 OnPropertyChenaged("v_back");
             }
         }
@@ -99,7 +120,7 @@ namespace Real.ViewModel
             get { return Change.pi; }
             set
             {
-                Change.pi = value;
+                Change.pi = AcsllRetrun(value);
                 OnPropertyChenaged("PI");
             }
         }
@@ -114,23 +135,23 @@ namespace Real.ViewModel
         }
         void OnIndexChanged()
         {
-            h_syns = ChangeEdid.resolution[Change.index - 1, 0].ToString();
-            h_back = ChangeEdid.resolution[Change.index - 1, 1].ToString();
-            h_active = ChangeEdid.resolution[Change.index - 1, 2].ToString();
-            h_front = ChangeEdid.resolution[Change.index - 1, 3].ToString();
-            v_syns = ChangeEdid.resolution[Change.index - 1, 4].ToString();
-            v_back = ChangeEdid.resolution[Change.index - 1, 5].ToString();
-            v_active = ChangeEdid.resolution[Change.index - 1, 6].ToString();
-            v_front = ChangeEdid.resolution[Change.index - 1, 7].ToString();
+            h_syns = ChangeEdid.resolution[Change.index , 0].ToString();
+            h_back = ChangeEdid.resolution[Change.index , 1].ToString();
+            h_active = ChangeEdid.resolution[Change.index , 2].ToString();
+            h_front = ChangeEdid.resolution[Change.index, 3].ToString();
+            v_syns = ChangeEdid.resolution[Change.index, 4].ToString();
+            v_back = ChangeEdid.resolution[Change.index, 5].ToString();
+            v_active = ChangeEdid.resolution[Change.index, 6].ToString();
+            v_front = ChangeEdid.resolution[Change.index, 7].ToString();
             int p = 0;
             int i = 0;
 
             for (int j = 0; j < 4; j++)
             {
-                p += ChangeEdid.resolution[Change.index - 1, j];
-                i += ChangeEdid.resolution[Change.index - 1, j + 4];
+                p += ChangeEdid.resolution[Change.index, j];
+                i += ChangeEdid.resolution[Change.index, j + 4];
             }
-            double piclock = Math.Round(((float)((ChangeEdid.pi[Change.index - 1] * 10000) / (float)(p * i))), 3);
+            double piclock = Math.Round(((float)((ChangeEdid.pi[Change.index] * 10000) / (float)(p * i))), 3);
 
             PI = piclock.ToString();
         }
@@ -169,30 +190,30 @@ namespace Real.ViewModel
                 if (piclock.flag + h_active.flag + h_back.flag + h_front.flag + h_syns.flag + v_active.flag + v_back.flag + v_front.flag + v_syns.flag >= 1)
                     goto jump;
 
-                arr16[ChangeEdid.index[Change.index - 1]] = piclock.ls_m;
-                arr16[ChangeEdid.index[Change.index - 1] + 1] = piclock.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 2] = piclock.ms_ms;
-                arr16[ChangeEdid.index[Change.index - 1] + 3] = piclock.ms;
-                arr16[ChangeEdid.index[Change.index - 1] + 4] = h_active.ls_m;
-                arr16[ChangeEdid.index[Change.index - 1] + 5] = h_active.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 6] = h_back.ls_m;
-                arr16[ChangeEdid.index[Change.index - 1] + 7] = h_back.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 8] = h_active.ms;
-                arr16[ChangeEdid.index[Change.index - 1] + 9] = h_back.ms;
-                arr16[ChangeEdid.index[Change.index - 1] + 10] = v_active.ls_m;
-                arr16[ChangeEdid.index[Change.index - 1] + 11] = v_active.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 12] = v_back.ls_m;
-                arr16[ChangeEdid.index[Change.index - 1] + 13] = v_back.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 14] = v_active.ms;
-                arr16[ChangeEdid.index[Change.index - 1] + 15] = v_back.ms;
-                arr16[ChangeEdid.index[Change.index - 1] + 16] = h_front.ls_m;
-                arr16[ChangeEdid.index[Change.index - 1] + 17] = h_front.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 18] = h_syns.ls_m;
-                arr16[ChangeEdid.index[Change.index - 1] + 19] = h_syns.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 20] = v_front.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 21] = v_syns.ls_l;
-                arr16[ChangeEdid.index[Change.index - 1] + 22] = h;
-                arr16[ChangeEdid.index[Change.index - 1] + 23] = v;
+                arr16[ChangeEdid.index[Change.index]] = piclock.ls_m;
+                arr16[ChangeEdid.index[Change.index] + 1] = piclock.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 2] = piclock.ms_ms;
+                arr16[ChangeEdid.index[Change.index] + 3] = piclock.ms;
+                arr16[ChangeEdid.index[Change.index] + 4] = h_active.ls_m;
+                arr16[ChangeEdid.index[Change.index] + 5] = h_active.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 6] = h_back.ls_m;
+                arr16[ChangeEdid.index[Change.index] + 7] = h_back.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 8] = h_active.ms;
+                arr16[ChangeEdid.index[Change.index] + 9] = h_back.ms;
+                arr16[ChangeEdid.index[Change.index] + 10] = v_active.ls_m;
+                arr16[ChangeEdid.index[Change.index] + 11] = v_active.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 12] = v_back.ls_m;
+                arr16[ChangeEdid.index[Change.index] + 13] = v_back.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 14] = v_active.ms;
+                arr16[ChangeEdid.index[Change.index] + 15] = v_back.ms;
+                arr16[ChangeEdid.index[Change.index] + 16] = h_front.ls_m;
+                arr16[ChangeEdid.index[Change.index] + 17] = h_front.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 18] = h_syns.ls_m;
+                arr16[ChangeEdid.index[Change.index] + 19] = h_syns.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 20] = v_front.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 21] = v_syns.ls_l;
+                arr16[ChangeEdid.index[Change.index] + 22] = h;
+                arr16[ChangeEdid.index[Change.index] + 23] = v;
 
 
                 string edidc = "";
@@ -209,6 +230,7 @@ namespace Real.ViewModel
                 System.Windows.MessageBox.Show("DTB Change Failing");
             }
         }
+
 
     }
 }

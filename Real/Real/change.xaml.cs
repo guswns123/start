@@ -19,7 +19,7 @@ namespace Real
 {
     /// <summary>
     /// change.xaml에 대한 상호 작용 논리
-    /// </summary>		value	1483680	int
+    /// </summary>		
     
     public partial class change : Page
     {
@@ -27,6 +27,7 @@ namespace Real
         {
             InitializeComponent();
             this.DataContext = new changeViewModel();
+
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -35,5 +36,6 @@ namespace Real
                  new Uri("/menu.xaml", UriKind.Relative)
             );
         }
+
     }
 }
