@@ -38,8 +38,9 @@
             <StackPanel HorizontalAlignment="Center" Height="71" Margin="20" VerticalAlignment="Top" Width="338" Orientation="Horizontal" >
                 <Button Margin="5" Content="Upload &#xA;File" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="45" Click="Button_Click_1" Command="{Binding BtnFile}"/>
                 <Button Margin="5" Content="ConnectPanel&#xA;EdidRead" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="85" Click="Button_Click_2" Command="{Binding BtnConnect}"/>
-                <Button Margin="5" Content="Resoultion&#xA;change" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="65" Click="Button_Click_4"  x:Name="chang"/>
-                <Button Margin="5" Content="Name&#xA;change" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="45" x:Name="Name" Click="Button_Click_5" RenderTransformOrigin="3.347,-2.873"/>
+                <Button Margin="5" Content="Resoultion&#xA;change" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="65" Click="Button_Click_4"  x:Name="chang" />
+                <Button Margin="5" Content="Name&#xA;change" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="45" x:Name="Name" 
+                        Click="Button_Click_5" RenderTransformOrigin="3.347,-2.873"/>
                 <Button Margin="5" Content="Save" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="45"  x:Name="write" Click="Write_Click"/>
             </StackPanel>
         </StackPanel>

@@ -19,7 +19,7 @@ namespace Real.ViewModel
             if (Global.WirteFlag == "ON")
                 Global.EDID = "";
             Initialization initialization = new Initialization();
-            if(Global.EDID != null && Global.EDID != "") 
+            if (Global.EDID != null && Global.EDID != "") 
                  Edid = Global.EDID;
         }
 
@@ -49,8 +49,8 @@ namespace Real.ViewModel
             set
             {
                 menu.sorts = value;
-                sort sort = new sort(menu.sorts);
-                Global.length = sort.strr.Length;
+                sort sorts = new sort(menu.sorts);
+                Global.length = sorts.strr.Length;
                 CheckSums checkSums = new CheckSums(menu.sorts);
                 menu.edid = checkSums.SortsStr;
                 OnPropertyChenaged("Edid");

@@ -95,7 +95,7 @@ namespace Real
                 Pather = "wrong value";
         }
 
-        public string Header() // 0~~~~19 byte data 처리
+        public string Header() 
         {
             string Header = "";
             string version = "";                                                                         // EDID 버전 표기 해야함
