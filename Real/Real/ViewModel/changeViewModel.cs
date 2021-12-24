@@ -320,7 +320,6 @@ namespace Real.ViewModel
                 arr16[ChangeEdid.index[Change.index] + 22] = h;
                 arr16[ChangeEdid.index[Change.index] + 23] = v;
 
-
                 string edidc = "";
                 foreach (char c in arr16)
                     edidc += c;

@@ -85,10 +85,11 @@ namespace Real
                 Pather += EstablishedTimingBitmap();
                 Pather += StandardDisplayModes();
                 Pather += Description();
+
                 for (int l = 0; l <= (imformation10[252] * 16 + imformation10[253]); l++)
                 {
                     if (imformation10[1 + (l * Constants.l)] == 2 && l != 0)
-                        ExtensionDataFormat(l);
+                        Pather += ExtensionDataFormat(l);
                 }
             }
             else
@@ -454,9 +455,11 @@ namespace Real
                     if (imformation10[115 + (i * Constants.m) + p] >= 12 && imformation10[115 + (i * Constants.m) + p] != 13) ////151
                     {
 
-                        for (int j = 0; j <= 13; j++)
+                        for (int j = 0; j <= 12; j++)
                         {
-                            Description[i, 0] += Convert.ToChar(imformation10[118 + (j * 2) + (i * Constants.m) + p] * 16 + imformation10[119 + (j * 2) + (i * Constants.m) + p]);//152 153
+                            if (Convert.ToChar(imformation10[118 + (j * 2) + (i * Constants.m) + p] * 16 + imformation10[119 + (j * 2) + (i * Constants.m) + p]) == '\n')
+                                break;
+                            Description[i, 0] += Convert.ToChar(imformation10[118 + (j * 2) + (i * Constants.m) + p] * 16 + imformation10[119 + (j * 2) + (i * Constants.m) + p]);
                         }
 
                         if (imformation16[115 + (i * Constants.m) + p] == 'F')////151
@@ -523,19 +526,19 @@ namespace Real
                                     switch (k)
                                     {
                                         case 0:
-                                            Description[i, 11] += "4:3\n";
+                                            Description[i, 11] += "4:3";
                                             break;
                                         case 1:
-                                            Description[i, 11] += "16:9\n";
+                                            Description[i, 11] += "16:9";
                                             break;
                                         case 2:
-                                            Description[i, 11] += "16:10\n";
+                                            Description[i, 11] += "16:10";
                                             break;
                                         case 3:
-                                            Description[i, 11] += "5:4\n";
+                                            Description[i, 11] += "5:4";
                                             break;
                                         case 4:
-                                            Description[i, 11] += "15:9\n";
+                                            Description[i, 11] += "15:9";
                                             break;
                                     }
                                 }
@@ -576,7 +579,7 @@ namespace Real
                                 if (imformation2[140 + (i * Constants.m) + p].Substring(k, 1) == "1")///176
                                     Description[i, 15 + k] = "none" + Description[i, 15 + k];
                             }
-                            Description[i, 20] = (imformation10[142 + (i * Constants.m) + p] * 16 + imformation10[143 + (i * Constants.m) + p]).ToString() + "\n";////178 179
+                            Description[i, 20] = (imformation10[142 + (i * Constants.m) + p] * 16 + imformation10[143 + (i * Constants.m) + p]).ToString() ;////178 179
 
                         }                                                                            /////////////////////////////With CVT support end
                     }                                                                               ///////////////////////////////EDID_Display_Range_Limits end
@@ -667,34 +670,34 @@ namespace Real
                         {
                             if (sumstring2.Substring(n, 1) == "1")
                             {
-                                if (n == 0) Description[i, 2] = "1152 X 864";
-                                else if (n == 1) Description[i, 2] = "1024 X 768";
-                                else if (n == 2) Description[i, 2] = "800 X 600";
-                                else if (n == 3) Description[i, 2] = "848 X 480";
-                                else if (n == 4) Description[i, 2] = "640 X 480";
-                                else if (n == 5) Description[i, 2] = "720 X 400";
-                                else if (n == 6) Description[i, 2] = "640 X 400";
-                                else if (n == 7) Description[i, 2] = "640 X 350";
-                                else if (n <= 11) Description[i, 2] = "1280 X 768";
-                                else if (n <= 13) Description[i, 2] = "1280 X 960";
-                                else if (n <= 15) Description[i, 2] = "1280 X 1024";
-                                else if (n == 16) Description[i, 2] = "1360 X 768";
-                                else if (n == 17) Description[i, 2] = "1280 X 768";
-                                else if (n <= 20) Description[i, 2] = "1440 X 900";
-                                else if (n <= 24) Description[i, 2] = "1440 X 1050";
-                                else if (n <= 28) Description[i, 2] = "1680 X 1050";
-                                else if (n <= 33) Description[i, 2] = "1680 X 1200";
-                                else if (n <= 35) Description[i, 2] = "1792 X 1344";
-                                else if (n <= 37) Description[i, 2] = "1856 X 1392";
-                                else if (n <= 41) Description[i, 2] = "1920 X 1200";
-                                else if (n <= 43) Description[i, 2] = "1920 X 1440";
+                                if (n == 0) Description[i, 2 + n] = "1152 X 864";
+                                else if (n == 1) Description[i, 2 + n] = "1024 X 768";
+                                else if (n == 2) Description[i, 2 + n] = "800 X 600";
+                                else if (n == 3) Description[i, 2 + n] = "848 X 480";
+                                else if (n == 4) Description[i, 2 + n] = "640 X 480";
+                                else if (n == 5) Description[i, 2 + n] = "720 X 400";
+                                else if (n == 6) Description[i, 2 + n] = "640 X 400";
+                                else if (n == 7) Description[i, 2 + n] = "640 X 350";
+                                else if (n <= 11) Description[i, 2 + n] = "1280 X 768";
+                                else if (n <= 13) Description[i, 2 + n] = "1280 X 960";
+                                else if (n <= 15) Description[i, 2 + n] = "1280 X 1024";
+                                else if (n == 16) Description[i, 2 + n] = "1360 X 768";
+                                else if (n == 17) Description[i, 2 + n] = "1280 X 768";
+                                else if (n <= 20) Description[i, 2 + n] = "1440 X 900";
+                                else if (n <= 24) Description[i, 2 + n] = "1440 X 1050";
+                                else if (n <= 28) Description[i, 2 + n] = "1680 X 1050";
+                                else if (n <= 33) Description[i, 2 + n] = "1680 X 1200";
+                                else if (n <= 35) Description[i, 2 + n] = "1792 X 1344";
+                                else if (n <= 37) Description[i, 2 + n] = "1856 X 1392";
+                                else if (n <= 41) Description[i, 2 + n] = "1920 X 1200";
+                                else if (n <= 43) Description[i, 2 + n] = "1920 X 1440";
 
-                                if (n <= 7 || n != 4 || n == 11 || n == 13 || n == 15 || n == 20 || n == 24 || n == 28 || n == 33 || n == 42) Description[i, 2] += "85Hz";
+                                if (n <= 7 || n != 4 || n == 11 || n == 13 || n == 15 || n == 20 || n == 24 || n == 28 || n == 33 || n == 42) Description[i, 2 + n] += "85Hz";
                                 else if (n == 4 || n == (8) || n == 9 || n == 12 || n == 14 || n == (16) || n == 17 || n == (18) ||
-                                            n == (21) || n == 22 || n == (24) || n == 25 || n == (26) || n == (29) || n == 34 || n == 36 || n == (38) || n == 39 || n == 42) Description[i, 2] += "60Hz";
-                                else if (n == 30) Description[i, 2] += "65Hz";
-                                else Description[i, 2] += "75Hz";
-                                if (n == 8 || n == 16 || n == 18 || n == 21 || n == 24 || n == 26 || n == 29 || n == 38) Description[i, 2] += " (CVT - RB)";
+                                            n == (21) || n == 22 || n == (24) || n == 25 || n == (26) || n == (29) || n == 34 || n == 36 || n == (38) || n == 39 || n == 42) Description[i, 2 + n] += "60Hz";
+                                else if (n == 30) Description[i, 2 + n] += "65Hz";
+                                else Description[i, 2 + n] += "75Hz";
+                                if (n == 8 || n == 16 || n == 18 || n == 21 || n == 24 || n == 26 || n == 29 || n == 38) Description[i, 2 + n] += " (CVT - RB)";
 
                             }
                         }
@@ -709,12 +712,12 @@ namespace Real
                         p = p + (jumpn * 256 - 108 + (i * Constants.m) + p);
                         jumpi = 108 + (i * Constants.m) + p;
                     }
-                   FinallyDescription +=  "\nManufacturer reserved descriptors.\n" ;
+                   FinallyDescription +=  "Manufacturer reserved descriptors.\n\n" ;
                 }
                 else if ((imformation10[108 + (i * Constants.m) + p] + imformation10[109 + (i * Constants.m) + p]  ////////150 144~9
                     + imformation10[110 + (i * Constants.m) + p] + imformation10[111 + (i * Constants.m) + p] + imformation10[112 + (i * Constants.m) + p] + imformation10[113 + (i * Constants.m) + p]) != 0)
                 {
-                    string dtd = "\n";
+                    string dtd = "";
                     string pixelClock = "";
                     int horizontalActive = 0;
                     int horizontalBlanking = 0;
@@ -868,10 +871,9 @@ namespace Real
                     if (sync_flag == "digital")
                         foreach (string j in Digital_sync)
                             dtd += j + "\n";
-                    FinallyDescription += dtd;
+                    FinallyDescription += (dtd + "\n") ;
                 }
             }
-            FinallyDescription += "\n";
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 20; j++)
@@ -879,7 +881,7 @@ namespace Real
                     if (Description[i, j] != null)
                         FinallyDescription += Description[i, j] + "\n";
                 }
-                if (Description[i, 1] != null)
+                if (Description[i, 0] != "" && Description[i, 0] != null)
                     FinallyDescription += "\n";
             }
             return FinallyDescription;
@@ -899,7 +901,7 @@ namespace Real
             if (imformation2[6 + (l * Constants.l)].Substring(1, 1) == "1") DTD += "display supports basic audio\n";
             if (imformation2[6 + (l * Constants.l)].Substring(2, 1) == "1") DTD += "display supports YCbCr 4  4  4\n";
             if (imformation2[6 + (l * Constants.l)].Substring(3, 1) == "1") DTD += "display supports YCbCr 4  2  2\n";
-            ExtensionDataFormat += DTD;
+            ExtensionDataFormat += DTD + "\n";
             for (int i = 0; i < DBCcount; i = i + (Convert.ToInt32(imformation2[8 + (l * Constants.l) + i].Substring(3, 1) + imformation2[9 + (l * Constants.l) + i], 2) + 1) * 2)
             {
                 if (imformation2[8 + (l * Constants.l) + i].Substring(0, 3) == "001")
@@ -911,7 +913,7 @@ namespace Real
                         Audio_Descriptor[2 + j * 4] = "Sampling frequencies (kHz) supported : ";
                         Audio_Descriptor[3 + j * 4] = "Bitrate / format dependent : ";
                         int foramtcode = imformation10[10 + (l * Constants.l) + i + (j * 6)] * 2 + Convert.ToInt32(imformation2[11 + (l * Constants.l) + i + (j * 6)].Substring(0, 1));
-                        if (foramtcode == 1 || foramtcode == 15) Audio_Descriptor[0 + j * 4] += "reserved";
+                        if (foramtcode == 0 || foramtcode == 15) Audio_Descriptor[0 + j * 4] += "reserved";
                         else if (foramtcode == 1) Audio_Descriptor[0 + j * 4] += "Linear pulse-code modulation (LPCM)";
                         else if (foramtcode == 2) Audio_Descriptor[0 + j * 4] += "AC-3";
                         else if (foramtcode == 3) Audio_Descriptor[0 + j * 4] += "MPEG-1";
@@ -927,109 +929,120 @@ namespace Real
                         else if (foramtcode == 13) Audio_Descriptor[0 + j * 4] += "DST Audio";
                         else if (foramtcode == 14) Audio_Descriptor[0 + j * 4] += "Microsoft WMA Pro";
 
-                        Audio_Descriptor[1 + j * 4] += Convert.ToInt32(imformation2[11 + (l * Constants.l) + i + (j * 3)].Substring(1, 3)).ToString() + " channel";
+                        Audio_Descriptor[1 + j * 4] += (Convert.ToInt32(imformation2[11 + (l * Constants.l) + i + (j * 3)].Substring(1, 3)) + 1).ToString() + " channel";
 
-                        int sample = imformation10[12 + (l * Constants.l) + i + (j * 6)] * 16 + imformation10[13 + (l * Constants.l) + i + (j * 6)];
-                        if (sample == 0) Audio_Descriptor[2 + j * 4] += "32KHz";
-                        else if (sample == 1) Audio_Descriptor[2 + j * 4] += "44.1KHz";
-                        else if (sample == 2) Audio_Descriptor[2 + j * 4] += "48KHz";
-                        else if (sample == 3) Audio_Descriptor[2 + j * 4] += "88KHz";
-                        else if (sample == 4) Audio_Descriptor[2 + j * 4] += "96KHz";
-                        else if (sample == 5) Audio_Descriptor[2 + j * 4] += "176KHz";
-                        else if (sample == 6) Audio_Descriptor[2 + j * 4] += "192KHz";
-                        else if (sample == 7) Audio_Descriptor[2 + j * 4] += "reserved";
-
-                        if (imformation10[15 + (l * Constants.l) + i + (j * 6)] == 0) Audio_Descriptor[3 + j * 4] += "16-bit depth";
-                        else if (imformation10[15 + (l * Constants.l) + i + (j * 6)] == 1) Audio_Descriptor[3 + j * 4] += "20-bit depth";
-                        else if (imformation10[15 + (l * Constants.l) + i + (j * 6)] == 1) Audio_Descriptor[3 + j * 4] += "24-bit depth";
+                        for (int k = 0; k < 8; k++)
+                        {
+                            string sample = (imformation2[12 + (l * Constants.l) + i + (j * 6)]  + imformation2[13 + (l * Constants.l) + i + (j * 6)]).Substring(k,1);
+                            if (sample == "1")
+                            {
+                                if (k == 7) Audio_Descriptor[2 + j * 4] += "32KHz ";
+                                else if (k == 6) Audio_Descriptor[2 + j * 4] += "44.1KHz ";
+                                else if (k == 5) Audio_Descriptor[2 + j * 4] += "48KHz ";
+                                else if (k == 4) Audio_Descriptor[2 + j * 4] += "88KHz ";
+                                else if (k == 3) Audio_Descriptor[2 + j * 4] += "96KHz ";
+                                else if (k == 2) Audio_Descriptor[2 + j * 4] += "176KHz ";
+                                else if (k == 1) Audio_Descriptor[2 + j * 4] += "192KHz ";
+                                else if (k == 0) Audio_Descriptor[2 + j * 4] += "reserved ";
+                            }
+                        }
+                        if (imformation10[14 + (l * Constants.l) + i + (j * 6)] == 0) Audio_Descriptor[3 + j * 4] += "16-bit depth";
+                        else if (imformation10[14 + (l * Constants.l) + i + (j * 6)] == 1) Audio_Descriptor[3 + j * 4] += "20-bit depth";
+                        else if (imformation10[14 + (l * Constants.l) + i + (j * 6)] == 2) Audio_Descriptor[3 + j * 4] += "24-bit depth";
                         else Audio_Descriptor[3 + j * 4] += "reserved";
-
-
                     }
-                    ExtensionDataFormat += "\n";
                     foreach (string s in Audio_Descriptor)
                         if (s != null)
                             ExtensionDataFormat += s + "\n";
                 }
                 else if (imformation2[8 + (l * Constants.l) + i].Substring(0, 3) == "010")
                 {
-                    int m = 0;
                     for (int j = 0; j < (Convert.ToInt32(imformation2[8 + (l * Constants.l) + i].Substring(3, 1) + imformation2[9 + (l * Constants.l) + i], 2)); j = j + 1)
                     {
-                        m++;
+                        
                         if (imformation10[10 + (l * Constants.l) + i + j * 2] > 8)
                             Video_Data_Blocks[0 + j * 2] = "This resolution is native resolution : ";
                         Video_Data_Blocks[0 + j] += (Convert.ToInt32(imformation2[10 + (l * Constants.l) + i + j * 2].Substring(1, 3), 2) * 16 + imformation10[11 + (l * Constants.l) + i + j * 2]).ToString() + " VIC Number ";
 
                     }
                     foreach (string s in Video_Data_Blocks)
-                    {
                         if (s != null)
                             ExtensionDataFormat += s;
-                        if (m % 10 == 0)
-                            ExtensionDataFormat += "\n";
-                    }
+                    ExtensionDataFormat += "\n";
                 }
                 else if (imformation2[8 + (l * Constants.l) + i].Substring(0, 3) == "011")
                 {
-                    for (int j = 0; j < (Convert.ToInt32(imformation2[8 + (l * Constants.l) + i + j * 1].Substring(3, 1) + imformation2[9 + (l * Constants.l) + i + j * 1], 2) / 13); j = j + 1)
+                    int a = Convert.ToInt32(imformation2[8 + (l * Constants.l) + i].Substring(3, 1) + imformation2[9 + (l * Constants.l) + i], 2);
+                        Vendor_Specific[0] = "IEEE Registration Identifier : " + (imformation16[14 + (l * Constants.l) + i ] + imformation16[15 + (l * Constants.l) + i]  +
+                            imformation16[12 + (l * Constants.l) + i] + imformation16[13 + (l * Constants.l) + i] + imformation16[10 + (l * Constants.l) + i] + imformation16[11 + (l * Constants.l) + i]);
+
+                        Vendor_Specific[1] = "Components of Source Physical Address : " + imformation16[16 + (l * Constants.l) + i] +
+                            imformation16[17 + (l * Constants.l) + i] + imformation16[18 + (l * Constants.l) + i] + imformation16[19 + (l * Constants.l) + i];
+                    if (a >= 5)
                     {
-                        Vendor_Specific[0 + j * 14] = "IEEE Registration Identifier : " + (imformation16[14 + (l * Constants.l) + i + j * 15] + imformation16[15 + (l * Constants.l) + i + j * 15] +
-                            imformation16[12 + (l * Constants.l) + i + j * 1] + imformation16[13 + (l * Constants.l) + i + j * 1] + imformation16[10 + (l * Constants.l) + i + j * 1] + imformation16[11 + (l * Constants.l) + i + j * 1]);
+                        Vendor_Specific[2] = "A function that needs info from ACP or ISRC packets supported";
+                        Vendor_Specific[3] = "16-bit-per-channel deep color (48-bit) supported";
+                        Vendor_Specific[4] = "12-bit-per-channel deep color (48-bit) supported";
+                        Vendor_Specific[5] = "10-bit-per-channel deep color (48-bit) supported";
+                        Vendor_Specific[6] = "4∶4∶4 in deep color modes supported";
+                        Vendor_Specific[7] = "DVI Dual Link Operation supported";
 
-                        Vendor_Specific[1 + j * 14] = "Components of Source Physical Address : " + imformation16[16 + (l * Constants.l) + i + j * 15] +
-                            imformation16[17 + (l * Constants.l) + i + j * 15] + imformation16[18 + (l * Constants.l) + i + j * 15] + imformation16[19 + (l * Constants.l) + i + j * 15];
-
-                        Vendor_Specific[2 + j * 14] = "A function that needs info from ACP or ISRC packets supported";
-                        Vendor_Specific[3 + j * 14] = "16-bit-per-channel deep color (48-bit) supported";
-                        Vendor_Specific[4 + j * 14] = "12-bit-per-channel deep color (48-bit) supported";
-                        Vendor_Specific[5 + j * 14] = "10-bit-per-channel deep color (48-bit) supported";
-                        Vendor_Specific[6 + j * 14] = "4∶4∶4 in deep color modes supported";
-                        Vendor_Specific[7 + j * 14] = "DVI Dual Link Operation supported";
-
-                        Vendor_Specific[9 + j * 14] = "Latency fields : present";
-                        Vendor_Specific[10 + j * 14] = "Interlaced latency fields. Absent if latency fields are absent : present";
+                        
 
                         for (int k = 0; k < 8; k++)
                         {
-
-                            if (imformation2[20 + (l * Constants.l) + i + j * 15] + imformation2[21 + (l * Constants.l) + i + j * 15].Substring(k, 1) == "0")
+                            string b = (imformation2[20 + (l * Constants.l) + i] + imformation2[21 + (l * Constants.l) + i]);
+                            if ((imformation2[20 + (l * Constants.l) + i] + imformation2[21 + (l * Constants.l) + i]).Substring(k, 1) == "0")
                             {
-                                if (k == 7) Vendor_Specific[7 + j * 14].Insert(24, "un");
-                                else if (k == 0) Vendor_Specific[(k + 2) + j * 14].Insert(52, "un");
-                                else if (k <= 3 && k <= 1) Vendor_Specific[(k + 2) + j * 14].Insert(38, "un");
-                                else Vendor_Specific[(k + 2) + j * 14].Insert(26, "un");
+                                if (k == 0)
+                                    Vendor_Specific[(k + 2)] = Vendor_Specific[(k + 2)].Insert(52, "un");
+                                else if (k <= 3 && k >= 1)
+                                    Vendor_Specific[(k + 2)] = Vendor_Specific[(k + 2)].Insert(38, "un");
+                                else if (k == 4)
+                                    Vendor_Specific[(k + 2)] = Vendor_Specific[(k + 2)].Insert(26, "un");
+                                else if (k == 7)
+                                    Vendor_Specific[7] = Vendor_Specific[7].Insert(24, "un");
                             }
-                            if (imformation2[24 + (l * Constants.l) + i + j * 15] + imformation2[25 + (l * Constants.l) + i + j * 15].Substring(k, 1) == "0")
+                        }
+                    }
+                    if(a >= 6)
+                        Vendor_Specific[8] = ((imformation10[22 + (l * Constants.l) + i] * 16 + imformation10[23 + (l * Constants.l) + i]) * 5).ToString() + "MHz";
+                    if(a >= 7)
+                    {
+                        Vendor_Specific[9] = "Latency fields : present";
+                        Vendor_Specific[10] = "Interlaced latency fields. Absent if latency fields are absent : present";
+                        for (int k = 0; k < 8; k++)
+                        {
+                            if ((imformation2[24 + (l * Constants.l) + i] + imformation2[25 + (l * Constants.l) + i]).Substring(k, 1) == "0")
                             {
                                 if (k == 0)
                                 {
-                                    Vendor_Specific[9 + j * 14] = Vendor_Specific[9 + j * 14].Remove(17, 7);
-                                    Vendor_Specific[9 + j * 14] += "absent";
+                                    Vendor_Specific[9] = Vendor_Specific[9].Remove(17, 7);
+                                    Vendor_Specific[9] += "absent";
                                 }
                                 else if (k == 1)
                                 {
-                                    Vendor_Specific[10 + j * 14] = Vendor_Specific[10 + j * 14].Remove(65, 7);
-                                    Vendor_Specific[10 + j * 14] += "absent";
+                                    Vendor_Specific[10] = Vendor_Specific[10].Remove(65, 7);
+                                    Vendor_Specific[10] += "absent";
 
                                 }
                             }
                         }
+                    }
+                    if (a >= 11)
+                    {
+                        Vendor_Specific[11] = "Video latency : ";
+                        Vendor_Specific[12] = "Audio latency (video delay for progressive sources) : ";
+                        Vendor_Specific[13] = "Interlaced video latency : ";
+                        Vendor_Specific[14] = "Interlaced audio latency (video delay for interlaced sources) : ";
 
-                        Vendor_Specific[8 + j * 14] = ((imformation10[22 + (l * Constants.l) + i + j * 15] * 16 + imformation10[23 + (l * Constants.l) + i + j * 15]) * 5).ToString() + "MHz";
-
-                        Vendor_Specific[11 + j * 14] = "Video latency : ";
-                        Vendor_Specific[12 + j * 14] = "Audio latency (video delay for progressive sources) : ";
-                        Vendor_Specific[13 + j * 14] = "Interlaced video latency : ";
-                        Vendor_Specific[14 + j * 14] = "Interlaced audio latency (video delay for interlaced sources) : ";
-
-                        Vendor_Specific[11 + j * 14] += ((imformation10[26 + (l * Constants.l) + i + j * 15] * 16 + imformation10[27 + (l * Constants.l) + i + j * 15] - 1) / 2).ToString() + "ms";
-                        Vendor_Specific[12 + j * 14] += ((imformation10[26 + (l * Constants.l) + i + j * 15] * 16 + imformation10[27 + (l * Constants.l) + i + j * 15] - 1) / 2).ToString() + "ms";
-                        Vendor_Specific[13 + j * 14] += ((imformation10[26 + (l * Constants.l) + i + j * 15] * 16 + imformation10[27 + (l * Constants.l) + i + j * 15] - 1) / 2).ToString() + "ms";
-                        Vendor_Specific[14 + j * 14] += ((imformation10[26 + (l * Constants.l) + i + j * 15] * 16 + imformation10[27 + (l * Constants.l) + i + j * 15] - 1) / 2).ToString() + "ms";
-
+                        Vendor_Specific[11] += ((imformation10[26 + (l * Constants.l) + i] * 16 + imformation10[27 + (l * Constants.l) + i] - 1) / 2).ToString() + "ms";
+                        Vendor_Specific[12] += ((imformation10[26 + (l * Constants.l) + i] * 16 + imformation10[27 + (l * Constants.l) + i] - 1) / 2).ToString() + "ms";
+                        Vendor_Specific[13] += ((imformation10[26 + (l * Constants.l) + i] * 16 + imformation10[27 + (l * Constants.l) + i] - 1) / 2).ToString() + "ms";
+                        Vendor_Specific[14] += ((imformation10[26 + (l * Constants.l) + i] * 16 + imformation10[27 + (l * Constants.l) + i] - 1) / 2).ToString() + "ms";
 
                     }
+                    
                     foreach (string s in Vendor_Specific)
                         if (s != null)
                             ExtensionDataFormat += s + "\n";
@@ -1037,21 +1050,21 @@ namespace Real
                 }
                 else if (imformation2[8 + (l * Constants.l) + i].Substring(0, 3) == "100")
                 {
-                    for (int j = 0; j < (Convert.ToInt32(imformation2[8 + (l * Constants.l) + i + j * 1].Substring(3, 1) + imformation2[9 + (l * Constants.l) + i + j * 1], 2)); j = j + 1)
+                    for (int j = 0; j < (Convert.ToInt32(imformation2[8 + (l * Constants.l) + i].Substring(3, 1) + imformation2[9 + (l * Constants.l) + i], 2))/3; j = j + 1)
                     {
-                        Speaker_Allocation_Data_Block[0 + j * 2] = "Rear left and right center : present";
-                        Speaker_Allocation_Data_Block[1 + j * 2] = "Front left and right center : present";
-                        Speaker_Allocation_Data_Block[2 + j * 2] = "Rear center : present";
-                        Speaker_Allocation_Data_Block[3 + j * 2] = "Rear left and right : present";
-                        Speaker_Allocation_Data_Block[4 + j * 2] = "Front center : present";
-                        Speaker_Allocation_Data_Block[5 + j * 2] = "Low-frequency effects (LFE) : present";
-                        Speaker_Allocation_Data_Block[6 + j * 2] = "Front left and right : present";
+                        Speaker_Allocation_Data_Block[0 + j * 7] = "Rear left and right center : present";
+                        Speaker_Allocation_Data_Block[1 + j * 7] = "Front left and right center : present";
+                        Speaker_Allocation_Data_Block[2 + j * 7] = "Rear center : present";
+                        Speaker_Allocation_Data_Block[3 + j * 7] = "Rear left and right : present";
+                        Speaker_Allocation_Data_Block[4 + j * 7] = "Front center : present";
+                        Speaker_Allocation_Data_Block[5 + j * 7] = "Low-frequency effects (LFE) : present";
+                        Speaker_Allocation_Data_Block[6 + j * 7] = "Front left and right : present";
 
-
+                        string a = imformation2[10 + (l * Constants.l) + i + j * 7] + imformation2[11 + (l * Constants.l) + i + j * 7];
                         for (int k = 1; k < 8; k++)
                         {
-                            if ((imformation2[10 + (l * Constants.l) + i + j * 2] + imformation2[11 + (l * Constants.l) + i + j * 2]).Substring(k, 1) == "0")
-                                Speaker_Allocation_Data_Block[(k - 1) + j * 2] = Speaker_Allocation_Data_Block[(k - 1) + j * 2].Replace("present", "absent");
+                            if ((imformation2[10 + (l * Constants.l) + i + j * 7] + imformation2[11 + (l * Constants.l) + i + j * 7]).Substring(k, 1) == "0")
+                                Speaker_Allocation_Data_Block[(k-1) + j * 7] = Speaker_Allocation_Data_Block[(k-1) + j * 7].Replace("present", "absent");
                         }
                     }
                     foreach (string s in Speaker_Allocation_Data_Block)
