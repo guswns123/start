@@ -67,10 +67,6 @@ namespace Real.ViewModel
     class readViewModel : Notifier
     {
         EDIDModel read = new EDIDModel();
-        public readViewModel()
-        {
-            
-        }
 
         public List<monitor> ListMonitor
         { 
@@ -83,6 +79,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("ListBoxItem");
             }
         }
+
         public int IndexMonitor
         {
             set

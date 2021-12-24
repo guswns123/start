@@ -15,7 +15,7 @@
             <RowDefinition Height="259*"/>
             <RowDefinition Height="119*"/>
         </Grid.RowDefinitions>
-        <ComboBox HorizontalAlignment="Left" Height="26" Margin="53,27,0,0" VerticalAlignment="Top" Width="317"  x:Name="comboBox" ItemsSource="{Binding SelectDTB}" SelectedIndex="{Binding SelcetIndex}"/>
+        <ComboBox HorizontalAlignment="Left" Height="26" Margin="50,36,0,0" VerticalAlignment="Top" Width="317"  x:Name="comboBox" ItemsSource="{Binding SelectDTB}" SelectedIndex="{Binding SelcetIndex}"/>
 
 
 
@@ -24,13 +24,13 @@
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="419,144,0,0" TextWrapping="Wrap" Text="Active" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="239,144,0,0" TextWrapping="Wrap" Text="Front" VerticalAlignment="Top" Width="133" Grid.Row="1"/>
 
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="600,12,0,0" Grid.Row="1" TextWrapping="Wrap" 
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="600,12,0,0" Grid.Row="1" TextWrapping="Wrap"
                  Text="{Binding PI ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151" x:Name="b_pi" />
         <TextBox HorizontalAlignment="Left" Height="30" Margin="60,87,0,0" TextWrapping="Wrap" 
                  Text="{Binding h_syns ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_syns" Grid.Row="1" />
         <TextBox HorizontalAlignment="Left" Height="30" Margin="239,87,0,0" TextWrapping="Wrap" 
                  Text="{Binding h_front ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_front" Grid.Row="1"  />
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="419,87,0,0" TextWrapping="Wrap" 
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="419,87,0,0" TextWrapping="Wrap"
                  Text="{Binding h_active ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_active" Grid.Row="1" />
         <TextBox HorizontalAlignment="Left" Height="30" Margin="600,87,0,0" TextWrapping="Wrap" 
                  Text="{Binding h_back ,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"  x:Name="b_h_back" Grid.Row="1" />

@@ -98,12 +98,15 @@ namespace Real.ViewModel
     class changeViewModel : Notifier
     {
         EDIDModel Change = new EDIDModel();
+
         List<string> DTB = new List<string>(new string[ChangeEdid.dtd]);
+
         public changeViewModel()
         {
             for (int i = 0; i < ChangeEdid.dtd; i++)
                 DTB[i] = ("DTB" + (i + 1));
         }
+
         public List<string> SelectDTB
         {
             get { return DTB; }
@@ -140,6 +143,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("h_syns");
             }
         }
+
         public string h_front
         {
             get { return Change.hfront; }
@@ -149,6 +153,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("h_front");
             }
         }
+
         public string h_active
         {
             get { return Change.hactive; }
@@ -158,6 +163,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("h_active");
             }
         }
+
         public string h_back
         {
             get { return Change.hback; }
@@ -167,6 +173,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("h_back");
             }
         }
+
         public string v_syns
         {
             get { return Change.vsyns; }
@@ -176,6 +183,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("v_syns");
             }
         }
+
         public string v_front
         {
             get { return Change.vfront; }
@@ -185,6 +193,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("v_front");
             }
         }
+
         public string v_active
         {
             get { return Change.vactive; }
@@ -194,6 +203,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("v_active");
             }
         }
+
         public string v_back
         {
             get { return Change.vback; }
@@ -203,6 +213,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("v_back");
             }
         }
+
         public string PI
         {
             get { return Change.pi; }
@@ -212,6 +223,7 @@ namespace Real.ViewModel
                 OnPropertyChenaged("PI");
             }
         }
+
         public int SelcetIndex
         {
             set
@@ -221,6 +233,7 @@ namespace Real.ViewModel
                 OnIndexChanged();
             }
         }
+
         void OnIndexChanged()
         {
             h_syns = ChangeEdid.resolution[Change.index , 0].ToString();
@@ -243,13 +256,17 @@ namespace Real.ViewModel
 
             PI = piclock.ToString();
         }
+
         sort sort = new sort(Global.EDID);
+
         ICommand changeedid;
+
         public ICommand ChangeEDID
         {
             get { return (this.changeedid) ?? (this.changeedid = new DelegateCommand(changed)); }
 
         }
+
         void changed()
         {
             char[] arr16 = sort.strc;

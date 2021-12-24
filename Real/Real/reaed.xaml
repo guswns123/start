@@ -20,11 +20,11 @@
 
     <Grid>
 
-        <TextBox HorizontalAlignment="Left" Height="258" Margin="385,77,0,0" TextWrapping="Wrap" Text="{Binding ReadEdid,Mode=TwoWay}" VerticalAlignment="Top" Width="365" x:Name="edid" IsReadOnly="True" FontFamily="Consolas news"/>
+        <TextBox HorizontalAlignment="Left" Height="258" Margin="385,77,0,0" TextWrapping="Wrap" Text="{Binding ReadEdid,Mode=TwoWay}" VerticalAlignment="Top" Width="320" x:Name="edid" IsReadOnly="True" FontFamily="Consolas news" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Left" Height="32" Margin="36,35,0,0" TextWrapping="Wrap" Text="Connect Monitor" VerticalAlignment="Top" Width="234" TextAlignment="Center"/>
         <ListBox HorizontalAlignment="Left" Height="258" Margin="34,77,0,0" VerticalAlignment="Top" Width="234"  ItemTemplate="{DynamicResource DataTemplate1}"
                   x:Name="select" ItemsSource="{Binding ListMonitor}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding IndexMonitor}"/>
-        <Button Content="EDID Select" HorizontalAlignment="Left" Height="32" Margin="385,36,0,0" VerticalAlignment="Top" Width="365" Click="Button_Click_1" Command="{Binding SelectEdid}"/>
+        <Button Content="EDID Select" HorizontalAlignment="Left" Height="32" Margin="385,36,0,0" VerticalAlignment="Top" Width="320" Click="Button_Click_1" Command="{Binding SelectEdid}"/>
 
     </Grid>
 </Page>

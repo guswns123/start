@@ -12,7 +12,7 @@
 
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="328" Margin="13,43,0,0" TextWrapping="Wrap" Text="{Binding EDID, Mode=OneWay}" VerticalAlignment="Top" Width="388" IsReadOnly="True" x:Name="edid" FontFamily="Consolas news"/>
+        <TextBox HorizontalAlignment="Left" Height="328" Margin="24,43,0,0" TextWrapping="Wrap" Text="{Binding EDID, Mode=OneWay}" VerticalAlignment="Top" Width="320" IsReadOnly="True" x:Name="edid" FontFamily="Consolas news" TextAlignment="Center"/>
 
         <TextBox HorizontalAlignment="Left" Height="55" Margin="418,77,0,0" TextWrapping="Wrap" Text="{Binding PathName}" VerticalAlignment="Top" Width="217" x:Name="path" IsReadOnly="True"/>
         <Button Content="Path" HorizontalAlignment="Left" Height="55" Margin="654,77,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" x:Name="path_b" Command="{Binding Path}"/>

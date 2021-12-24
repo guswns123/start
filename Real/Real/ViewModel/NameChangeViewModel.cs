@@ -49,10 +49,12 @@ namespace Real.ViewModel
     class NameChangeViewModel : Notifier
     {
         EDIDModel NameChange = new EDIDModel();
+
         public string BName
         {
             get { return ChangeEdid.dess; }
         }
+
         public string AName
         {
             set
@@ -61,11 +63,13 @@ namespace Real.ViewModel
                 OnPropertyChenaged("AName");
             }
         }
+
         public ICommand ChangeName
         {
             get { return (this.NameChange.changename) ?? (this.NameChange.changename = new DelegateCommand(Name)); }
 
         }
+
         void Name()
         {
             try
