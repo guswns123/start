@@ -17,7 +17,7 @@ namespace Real.Model
 
         public string sorts { get; set; }
 
-        public string path { get; set; }
+        public string parser { get; set; }
         /////////////
         /////////////read Model
         public List<monitor> m
@@ -62,9 +62,9 @@ namespace Real.Model
         public ICommand changename { get; set; }
         ////////////
         ////////////write Model
-        public ICommand writepath { get; set; }
+        public ICommand writeparser { get; set; }
 
-        public string pathname { get; set; }
+        public string parsername { get; set; }
 
         public bool? txt { get; set; }
 

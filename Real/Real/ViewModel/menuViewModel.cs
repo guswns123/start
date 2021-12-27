@@ -59,10 +59,10 @@ namespace Real.ViewModel
         }
         public string Path
         {
-            get { return menu.path; }
+            get { return menu.parser; }
             set
             {
-                menu.path = value;
+                menu.parser = value;
                 OnPropertyChenaged("Path");
             }
         }
@@ -71,7 +71,7 @@ namespace Real.ViewModel
             Initialization initialization = new Initialization();
             sort sort = new sort(Edid);
             Global.length = sort.strr.Length;
-            EdidPath edidPath = new EdidPath(Edid);
+            EdidParser edidPath = new EdidParser(Edid);
             Path = edidPath.Pather;
             Global.EDID = menu.edid;
         }

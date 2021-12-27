@@ -253,7 +253,6 @@ namespace Real.ViewModel
                 i += ChangeEdid.resolution[Change.index, j + 4];
             }
             double piclock = Math.Round(((float)((ChangeEdid.pi[Change.index] * 10000) / (float)(p * i))), 3);
-
             PI = piclock.ToString();
         }
 

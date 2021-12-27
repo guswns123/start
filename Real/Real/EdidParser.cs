@@ -70,10 +70,10 @@ namespace Real
         }
 
     }
-    class EdidPath : converter
+    class EdidParser : converter
     {
         public string Pather = "";
-        public EdidPath(string strss) : base(strss)
+        public EdidParser(string strss) : base(strss)
         {
             sort sort = new sort(strss);
             if (sort.strr.Length % 128 == 0 && sort.strr.Length != 0)
@@ -946,9 +946,9 @@ namespace Real
                                 else if (k == 0) Audio_Descriptor[2 + j * 4] += "reserved ";
                             }
                         }
-                        if (imformation10[14 + (l * Constants.l) + i + (j * 6)] == 0) Audio_Descriptor[3 + j * 4] += "16-bit depth";
-                        else if (imformation10[14 + (l * Constants.l) + i + (j * 6)] == 1) Audio_Descriptor[3 + j * 4] += "20-bit depth";
-                        else if (imformation10[14 + (l * Constants.l) + i + (j * 6)] == 2) Audio_Descriptor[3 + j * 4] += "24-bit depth";
+                        if (imformation10[14 + (l * Constants.l) + i + (j * 6)] % 2 == 0) Audio_Descriptor[3 + j * 4] += "16-bit depth";
+                        else if (imformation2[14 + (l * Constants.l) + i + (j * 6)].Substring(1,1) == "1") Audio_Descriptor[3 + j * 4] += "20-bit depth";
+                        else if (imformation2[14 + (l * Constants.l) + i + (j * 6)].Substring(2,1) == "2") Audio_Descriptor[3 + j * 4] += "24-bit depth";
                         else Audio_Descriptor[3 + j * 4] += "reserved";
                     }
                     foreach (string s in Audio_Descriptor)

@@ -20,8 +20,7 @@
             <RowDefinition Height="0*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
-
+        
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="EDID Reader" x:Name="title"
                    VerticalAlignment="Top" RenderTransformOrigin="1.542,1.054" Margin="62,15,0,0" Height="34" Width="269" FontSize="20" TextAlignment="Center" Grid.RowSpan="2" Grid.Column="1" x:FieldModifier="public"/>
 

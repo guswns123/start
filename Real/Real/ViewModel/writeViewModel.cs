@@ -21,7 +21,7 @@ namespace Real.ViewModel
         }
         public ICommand Path
         {
-            get { return (this.write.writepath) ?? (this.write.writepath = new DelegateCommand(PATH)); }
+            get { return (this.write.writeparser) ?? (this.write.writeparser = new DelegateCommand(PATH)); }
 
         }
         void PATH()
@@ -33,10 +33,10 @@ namespace Real.ViewModel
         }
         public string PathName
         {
-            get { return write.pathname; }
+            get { return write.parsername; }
             set
             {
-                write.pathname = value;
+                write.parsername = value;
                 OnPropertyChenaged("PathName");
             }
         }
@@ -70,7 +70,7 @@ namespace Real.ViewModel
         {
             if (write.txt == true || write.bin == true)
             {
-                string p = write.pathname + "\\" + FileName;
+                string p = write.parsername + "\\" + FileName;
                 fileroad fileroad = new fileroad(write.txt, write.bin, p, Global.EDID);
                 Global.WirteFlag = "ON";
             }

@@ -105,7 +105,7 @@
     <Compile Include="change.xaml.cs">
       <DependentUpon>change.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EdidPath.cs" />
+    <Compile Include="EdidParser.cs" />
     <Compile Include="Etc.cs" />
     <Compile Include="ViewModel\changeViewModel.cs" />
     <Compile Include="ViewModel\menuViewModel.cs" />
