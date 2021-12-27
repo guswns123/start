@@ -1,3 +1,3 @@
 # start
 start
-///EDID Reader
+# EDID Reader
