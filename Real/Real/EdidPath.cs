@@ -414,7 +414,7 @@ namespace Real
                     Stand += "X_resoloution : " + X_resoloution[i] + "\n";
                     Stand += "Y_resoloution : " + Y_resoloution[i] + "\n";
                     Stand += "Vertical_frequency : " + VerticalFrequency[i] + "\n";
-                    Stand += "modes : " + Modes[i] + "\n";
+                    Stand += "modes : " + Modes[i] + "\n" + "\n";
                     ////////////////////
                 }
             }
@@ -897,7 +897,7 @@ namespace Real
             string DTD = "\n";
             int DBCcount = ((imformation10[4 + (l * Constants.l)] * 16 + imformation10[5 + (l * Constants.l)]) * 2) - 8;
             DTD = "Extension_data_format\n";
-            if (imformation2[6 + (l * Constants.l)].Substring(0, 1) == "1") DTD += "display supports underscan\n";
+            if (imformation2[6 + (l * Constants.l)].Substring(0, 1) == "1") DTD += "display supports under scan\n";
             if (imformation2[6 + (l * Constants.l)].Substring(1, 1) == "1") DTD += "display supports basic audio\n";
             if (imformation2[6 + (l * Constants.l)].Substring(2, 1) == "1") DTD += "display supports YCbCr 4  4  4\n";
             if (imformation2[6 + (l * Constants.l)].Substring(3, 1) == "1") DTD += "display supports YCbCr 4  2  2\n";
