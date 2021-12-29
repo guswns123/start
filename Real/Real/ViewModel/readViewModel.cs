@@ -5,6 +5,7 @@ using System.Management;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EDIDParser;
 using Real.Model;
 namespace Real.ViewModel
 {

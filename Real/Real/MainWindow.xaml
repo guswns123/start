@@ -8,6 +8,6 @@
         Title="EDID Reader" Height="450" Width="800">
 
     <Grid>
-        <Frame Source="/menu.xaml"/>
+        <Frame Source="View/menu.xaml"/>
     </Grid>
 </Window>

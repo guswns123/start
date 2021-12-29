@@ -44,6 +44,15 @@
         "runtime": {
           "lib/net452/Microsoft.WindowsAPICodePack.Shell.dll": {}
         }
+      },
+      "EDIDParser/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/EDIDParser.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EDIDParser.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.6.1/win": {
@@ -88,6 +97,15 @@
         },
         "runtime": {
           "lib/net452/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        }
+      },
+      "EDIDParser/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/EDIDParser.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EDIDParser.dll": {}
         }
       }
     },
@@ -134,6 +152,15 @@
         "runtime": {
           "lib/net452/Microsoft.WindowsAPICodePack.Shell.dll": {}
         }
+      },
+      "EDIDParser/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/EDIDParser.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EDIDParser.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.6.1/win-x86": {
@@ -178,6 +205,15 @@
         },
         "runtime": {
           "lib/net452/Microsoft.WindowsAPICodePack.Shell.dll": {}
+        }
+      },
+      "EDIDParser/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/EDIDParser.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EDIDParser.dll": {}
         }
       }
     }
@@ -228,10 +264,16 @@
         "microsoft-windowsapicodepack-shell.1.1.4.nupkg.sha512",
         "microsoft-windowsapicodepack-shell.nuspec"
       ]
+    },
+    "EDIDParser/1.0.0": {
+      "type": "project",
+      "path": "../WpfControlLibrary2/EDIDParser.csproj",
+      "msbuildProject": "../WpfControlLibrary2/EDIDParser.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.6.1": [
+      "EDIDParser >= 1.0.0",
       "Microsoft-WindowsAPICodePack-Shell >= 1.1.4"
     ]
   },
@@ -261,7 +303,11 @@
       },
       "frameworks": {
         "net461": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\dlee.RAON-TECH\\test\\arirnag\\start\\Real\\WpfControlLibrary2\\EDIDParser.csproj": {
+              "projectPath": "C:\\Users\\dlee.RAON-TECH\\test\\arirnag\\start\\Real\\WpfControlLibrary2\\EDIDParser.csproj"
+            }
+          }
         }
       }
     },

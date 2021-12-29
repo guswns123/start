@@ -67,14 +67,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Real.exe" size="83456">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Real.exe" size="52736">
       <assemblyIdentity name="Real" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Cq1rUrev+rbw6icNTLjp7vGR/1iSzemKLxpFKUxKjRM=</dsig:DigestValue>
+        <dsig:DigestValue>WsUN0qvD4XnLoiNw62wOPdnIQjtZwY0fQLjxeOorP+s=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WpfControlLibrary2.dll" size="39424">
+      <assemblyIdentity name="WpfControlLibrary2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ug0UpuiyzBqJPvGGXh7jkliG+VfF6wgi/AbrOqUWp4U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

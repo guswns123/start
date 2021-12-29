@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Real.Model;
+using EDIDParser;
 namespace Real.ViewModel
 {
     class writeViewModel : Notifier

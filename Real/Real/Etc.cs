@@ -1,37 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Management;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Navigation;
-
+using EDIDParser;
 namespace Real
 {
-    static class ChangeEdid
-    {
-        public static int[,] resolution = new int[10, 8];
-        public static long[] pi = new long[10];
-        public static int[] index = new int[10];
-        public static int countm = 0;
-        public static string[] read = new string[5];
-        public static int des = 0;
-        public static int[] de = new int[5];
-        public static string dess = "";
-        public static string[] proprety = new string[20];
-        public static int dtd = 0;
-    }
-    static class Global
-    {
-        public static string EDID; // wirte EDID value
-        public static int length = 0; // EDID length
-        public static string WirteFlag;
-    }
-    class CheckSums : converter
+    public class CheckSums : converter
     {
         public string SortsStr;
         public string strs;
@@ -70,7 +46,54 @@ namespace Real
             SortsStr = check.str;
         }
     }
-    class fileroad
+    public class Notifier : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChenaged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+    }
+    public class DelegateCommand : ICommand
+    {
+        private readonly Func<bool> canExecute;
+        private readonly Action execute;
+
+        public DelegateCommand(Action exectue) : this(exectue, null)
+        {
+        }
+
+        public DelegateCommand(Action execute, Func<bool> canExecute)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
+        }
+
+        public event EventHandler CanExecuteChanged;
+        public bool CanExecute(object parameter)
+        {
+            if (this.canExecute == null)
+            {
+                return true;
+            }
+            return this.canExecute();
+        }
+
+        public void Execute(object parameter)
+        {
+            this.execute();
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+            if (this.CanExecuteChanged != null)
+            {
+                this.CanExecuteChanged(this, EventArgs.Empty);
+            }
+        }
+    }
+    public class fileroad
     {
         public string arr = "";
         public string n = "";
@@ -98,12 +121,12 @@ namespace Real
                         arr = (sr.ReadToEnd()).ToUpper();
                     }
                 }
-                else if(Extension == "bin")
+                else if (Extension == "bin")
                 {
                     byte[] buff = File.ReadAllBytes(l);
                     foreach (byte b in buff)
                     {
-                        if(b > 15)
+                        if (b > 15)
                             arr += Convert.ToString(b, 16);
                         else
                             arr += "0" + Convert.ToString(b, 16);
@@ -160,67 +183,6 @@ namespace Real
             catch
             {
                 System.Windows.MessageBox.Show("save file failing.");
-            }
-        }
-    }
-    class Initialization
-    {
-        public Initialization()
-        {
-            for (int cho = 0; cho < ChangeEdid.countm; cho++)
-                ChangeEdid.read[cho] = string.Empty;
-            ChangeEdid.countm = 0;
-            ChangeEdid.des = 0;
-            ChangeEdid.dess = "";
-            ChangeEdid.dtd = 0;
-            Global.WirteFlag = "";
-        }
-
-    }
-    public class Notifier : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChenaged(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-    }
-    public class DelegateCommand : ICommand
-    {
-        private readonly Func<bool> canExecute;
-        private readonly Action execute;
-
-        public DelegateCommand(Action exectue) : this(exectue, null)
-        {
-        }
-
-        public DelegateCommand(Action execute, Func<bool> canExecute)
-        {
-            this.execute = execute;
-            this.canExecute = canExecute;
-        }
-
-        public event EventHandler CanExecuteChanged;
-        public bool CanExecute(object parameter)
-        {
-            if (this.canExecute == null)
-            {
-                return true;
-            }
-            return this.canExecute();
-        }
-
-        public void Execute(object parameter)
-        {
-            this.execute();
-        }
-
-        public void RaiseCanExecuteChanged()
-        {
-            if (this.CanExecuteChanged != null)
-            {
-                this.CanExecuteChanged(this, EventArgs.Empty);
             }
         }
     }

@@ -1,0 +1,13 @@
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\bin\Release\WpfControlLibrary2.dll
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\bin\Release\WpfControlLibrary2.pdb
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\EDIDParser.csprojAssemblyReference.cache
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\UserControl1.g.cs
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\WpfControlLibrary2_MarkupCompile.cache
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\WpfControlLibrary2_MarkupCompile.lref
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\UserControl1.baml
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\WpfControlLibrary2.g.resources
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\WpfControlLibrary2.Properties.Resources.resources
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\EDIDParser.csproj.GenerateResource.cache
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\EDIDParser.csproj.CoreCompileInputs.cache
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\WpfControlLibrary2.dll
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\WpfControlLibrary2\obj\Release\WpfControlLibrary2.pdb

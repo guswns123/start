@@ -100,30 +100,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Etc.cs" />
     <Compile Include="Model\EDIDModel.cs" />
     <Compile Include="ViewModel\NameChangeViewModel.cs" />
-    <Compile Include="change.xaml.cs">
-      <DependentUpon>change.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EdidParser.cs" />
-    <Compile Include="Etc.cs" />
     <Compile Include="ViewModel\changeViewModel.cs" />
     <Compile Include="ViewModel\menuViewModel.cs" />
-    <Compile Include="Namechange.xaml.cs">
-      <DependentUpon>Namechange.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="reaed.xaml.cs">
-      <DependentUpon>reaed.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\readViewModel.cs" />
     <Compile Include="ViewModel\writeViewModel.cs" />
-    <Compile Include="write.xaml.cs">
+    <Compile Include="View\change.xaml.cs">
+      <DependentUpon>change.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\menu.xaml.cs">
+      <DependentUpon>menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Namechange.xaml.cs">
+      <DependentUpon>Namechange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\reaed.xaml.cs">
+      <DependentUpon>reaed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\write.xaml.cs">
       <DependentUpon>write.xaml</DependentUpon>
     </Compile>
-    <Page Include="change.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,27 +134,28 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="menu.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="View\change.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Namechange.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="View\menu.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="reaed.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="View\Namechange.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="write.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="View\reaed.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\write.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="menu.xaml.cs">
-      <DependentUpon>menu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -201,6 +200,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="EDIDIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfControlLibrary2\EDIDParser.csproj">
+      <Project>{1943d0b1-e8f1-4ee4-8fa4-895e9061cf7d}</Project>
+      <Name>EDIDParser</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

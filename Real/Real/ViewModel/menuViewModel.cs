@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Real.Model;
+using EDIDParser;
 namespace Real.ViewModel
 {
     public class menuViewModel : Notifier
