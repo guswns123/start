@@ -18,6 +18,10 @@ namespace Real.Model
         public string sorts { get; set; }
 
         public string parser { get; set; }
+
+        public bool Plusdot { get; set; }
+
+        public bool Plushex { get; set; }
         /////////////
         /////////////read Model
         public List<monitor> m

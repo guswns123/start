@@ -100,6 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EDIDParser.cs" />
     <Compile Include="Etc.cs" />
     <Compile Include="Model\EDIDModel.cs" />
     <Compile Include="ViewModel\NameChangeViewModel.cs" />
@@ -201,12 +202,5 @@
   <ItemGroup>
     <Resource Include="EDIDIcon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WpfControlLibrary2\EDIDParser.csproj">
-      <Project>{1943d0b1-e8f1-4ee4-8fa4-895e9061cf7d}</Project>
-      <Name>EDIDParser</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

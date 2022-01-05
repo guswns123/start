@@ -34,9 +34,9 @@ namespace Real.ViewModel
         {
             try
             {
-                fileroad fileroad = new fileroad();
-                sort filesort = new sort(fileroad.arr);
-                Edid = filesort.str;
+                fileroad fileRoad = new fileroad();
+                sort fileSort = new sort(fileRoad.arr);
+                Edid = fileSort.str;
             }
             catch
             {
@@ -50,10 +50,8 @@ namespace Real.ViewModel
             set
             {
                 menu.sorts = value;
-                sort sorts = new sort(menu.sorts);
-                Global.length = sorts.strr.Length;
                 CheckSums checkSums = new CheckSums(menu.sorts);
-                menu.edid = checkSums.SortsStr;
+                menu.edid = PlusString(checkSums.SortsStr);
                 OnPropertyChenaged("Edid");
                 OnPathChanged();
             }
@@ -70,12 +68,51 @@ namespace Real.ViewModel
         void OnPathChanged()
         {
             Initialization initialization = new Initialization();
-            sort sort = new sort(Edid);
-            Global.length = sort.strr.Length;
             EdidParser edidPath = new EdidParser(Edid);
             Path = edidPath.Pather;
             Global.EDID = menu.edid;
         }
+        
+        public bool PlusHex
+        {
+            get { return menu.Plushex; }
+            set
+            {
+                menu.Plushex = value;
+                Edid = Edid;
+            }
+        }
+        public bool PlusDot
+        {
+            get { return menu.Plusdot; }
+            set
+            {
+                menu.Plusdot = value;
+                Edid = Edid;
+            }
+        }
+
+
+        string PlusString(string args)
+        {
+            string str = "";
+            str = str.Replace(",", "");
+            str = str.Replace("0X", "");
+            string[] arraystr = args.Split(' ');
+            foreach(string s in arraystr)
+            {
+                if (PlusHex == true)
+                    str += "0x";
+                str += s;
+                if (PlusDot == true)
+                    str += ",";
+                str += " ";
+            }
+            
+            return str;
+
+        }
+        
 
     }
 }

@@ -7,14 +7,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Real.exe.manifest" size="6023">
+    <dependentAssembly dependencyType="install" codebase="Real.exe.manifest" size="5369">
       <assemblyIdentity name="Real.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6E3FG0HixU6G0xttlOExrVnuX8HeTzBepDF37O6r2Ik=</dsig:DigestValue>
+        <dsig:DigestValue>17NWVTkhpbqnIeNE+C8daP8SVVtB9gtC1YXHATqZHl8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

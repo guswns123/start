@@ -17,9 +17,8 @@ namespace Real
         string chec = "";
         public CheckSums(string strss) : base(strss)
         {
-            strss = (strss.Replace(Environment.NewLine, "")).ToUpper();
-            strss = (strss.Replace("\r", "")).ToUpper();
-            strss = strss.Replace(" ", "");
+            sort sort = new sort(strss);
+            strss = sort.strr;
             while (strss.Substring(strss.Length - 1, 1) == " ")
                 strss = strss.Remove(strss.Length - 1, 1);
             int e1 = strss.Length;
@@ -132,8 +131,6 @@ namespace Real
                             arr += "0" + Convert.ToString(b, 16);
                     }
                 }
-                sort sort = new sort(arr);
-                Global.length = sort.strr.Length;
             }
             catch
             {

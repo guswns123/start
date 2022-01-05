@@ -20,8 +20,6 @@ C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\Real.csproj.Cop
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\Real.exe
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\Real.pdb
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\Real.csprojAssemblyReference.cache
-C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\bin\Release\WpfControlLibrary2.dll
-C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\bin\Release\WpfControlLibrary2.pdb
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\View\change.g.cs
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\View\menu.g.cs
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Release\View\Namechange.g.cs

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using EDIDParser;
 using Real.Model;
+using EDIDParser;
 namespace Real.ViewModel
 {
     class Namechanger
