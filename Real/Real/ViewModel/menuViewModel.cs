@@ -34,7 +34,7 @@ namespace Real.ViewModel
         {
             try
             {
-                fileroad fileRoad = new fileroad();
+                FileRoad fileRoad = new FileRoad();
                 sort fileSort = new sort(fileRoad.arr);
                 Edid = fileSort.str;
             }

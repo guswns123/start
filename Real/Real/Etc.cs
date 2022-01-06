@@ -92,12 +92,12 @@ namespace Real
             }
         }
     }
-    public class fileroad
+    public class FileRoad
     {
         public string arr = "";
         public string n = "";
         string Extension = "";
-        public fileroad()
+        public FileRoad()
         {
             string l = "";
             OpenFileDialog opendlg = new OpenFileDialog();
@@ -136,7 +136,7 @@ namespace Real
             {
             }
         }
-        public fileroad(bool? Txt, bool? Bin, string path, string edid)
+        public FileRoad(bool? Txt, bool? Bin, string path, string edid)
         {
             try
             {

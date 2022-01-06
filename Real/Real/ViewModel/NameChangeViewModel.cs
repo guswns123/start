@@ -60,14 +60,14 @@ namespace Real.ViewModel
         {
             set
             {
-                NameChange.aname = value;
+                NameChange.aName = value;
                 OnPropertyChenaged("AName");
             }
         }
 
         public ICommand ChangeName
         {
-            get { return (this.NameChange.changename) ?? (this.NameChange.changename = new DelegateCommand(Name)); }
+            get { return (this.NameChange.changeName) ?? (this.NameChange.changeName = new DelegateCommand(Name)); }
 
         }
 
@@ -77,12 +77,12 @@ namespace Real.ViewModel
             {
                 sort sort = new sort(Global.EDID);
                 char[] arr16 = sort.strc;
-                if (NameChange.aname.Length > 13)
+                if (NameChange.aName.Length > 13)
                 {
-                    NameChange.aname = null;
+                    NameChange.aName = null;
                     System.Windows.MessageBox.Show("Display has max length to 13 words");
                 }
-                    byte[] arr_byteStr = Encoding.Default.GetBytes(NameChange.aname);
+                    byte[] arr_byteStr = Encoding.Default.GetBytes(NameChange.aName);
                     Namechanger name = new Namechanger(arr16, arr_byteStr);
                     CheckSums checksums = new CheckSums(name.edidcn);
                     Global.EDID = checksums.SortsStr;

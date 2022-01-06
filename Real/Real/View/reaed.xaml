@@ -10,20 +10,21 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="read">
 
-    <Page.Resources>
-        <DataTemplate x:Key="DataTemplate1">
-            <Grid Height="21" Width="237">
-                <TextBlock HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="237"/>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
 
     <Grid>
 
         <TextBox HorizontalAlignment="Left" Height="258" Margin="385,77,0,0" TextWrapping="Wrap" Text="{Binding ReadEdid,Mode=TwoWay}" VerticalAlignment="Top" Width="340" x:Name="edid" IsReadOnly="True" FontFamily="Consolas news" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Left" Height="32" Margin="36,35,0,0" TextWrapping="Wrap" Text="Connect Monitor" VerticalAlignment="Top" Width="234" TextAlignment="Center"/>
-        <ListBox HorizontalAlignment="Left" Height="258" Margin="34,77,0,0" VerticalAlignment="Top" Width="234"  ItemTemplate="{DynamicResource DataTemplate1}"
-                  x:Name="select" ItemsSource="{Binding ListMonitor}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding IndexMonitor}"/>
+        <ListBox HorizontalAlignment="Left" Height="258" Margin="34,77,0,0" VerticalAlignment="Top" Width="234"  
+                  x:Name="select" ItemsSource="{Binding ListMonitor}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding IndexMonitor}" >
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                    </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
         <Button Content="EDID Select" HorizontalAlignment="Left" Height="32" Margin="385,36,0,0" VerticalAlignment="Top" Width="340" Click="Button_Click_1" Command="{Binding SelectEdid}"/>
 
     </Grid>

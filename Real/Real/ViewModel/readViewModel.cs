@@ -60,6 +60,8 @@ namespace Real.ViewModel
             List<monitor> m = new List<monitor>();
             foreach (string mo in ChangeEdid.proprety)
             {
+                if (mo == null)
+                    break;
                 m.Add(new monitor(mo));
             }
             return m;
@@ -68,12 +70,15 @@ namespace Real.ViewModel
     class readViewModel : Notifier
     {
         EDIDModel read = new EDIDModel();
-
+        public readViewModel()
+        {
+            read.M = monitor.Monitor();
+        }
         public List<monitor> ListMonitor
         { 
             get
             {
-                return read.m;
+                return read.M;
             }
             set
             {

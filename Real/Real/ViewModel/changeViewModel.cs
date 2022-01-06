@@ -137,80 +137,80 @@ namespace Real.ViewModel
 
         public string h_syns
         {
-            get{ return Change.hsyns; }
+            get{ return Change.hSyns; }
             set
             {
-                Change.hsyns = AcsllRetrun(value);
+                Change.hSyns = AcsllRetrun(value);
                 OnPropertyChenaged("h_syns");
             }
         }
 
         public string h_front
         {
-            get { return Change.hfront; }
+            get { return Change.hFront; }
             set
             {
-                Change.hfront = AcsllRetrun(value);
+                Change.hFront = AcsllRetrun(value);
                 OnPropertyChenaged("h_front");
             }
         }
 
         public string h_active
         {
-            get { return Change.hactive; }
+            get { return Change.hActive; }
             set
             {
-                Change.hactive = AcsllRetrun(value);
+                Change.hActive = AcsllRetrun(value);
                 OnPropertyChenaged("h_active");
             }
         }
 
         public string h_back
         {
-            get { return Change.hback; }
+            get { return Change.hBack; }
             set
             {
-                Change.hback = AcsllRetrun(value);
+                Change.hBack = AcsllRetrun(value);
                 OnPropertyChenaged("h_back");
             }
         }
 
         public string v_syns
         {
-            get { return Change.vsyns; }
+            get { return Change.vSyns; }
             set
             {
-                Change.vsyns = AcsllRetrun(value);
+                Change.vSyns = AcsllRetrun(value);
                 OnPropertyChenaged("v_syns");
             }
         }
 
         public string v_front
         {
-            get { return Change.vfront; }
+            get { return Change.vFront; }
             set
             {
-                Change.vfront = AcsllRetrun(value);
+                Change.vFront = AcsllRetrun(value);
                 OnPropertyChenaged("v_front");
             }
         }
 
         public string v_active
         {
-            get { return Change.vactive; }
+            get { return Change.vActive; }
             set
             {
-                Change.vactive = AcsllRetrun(value);
+                Change.vActive = AcsllRetrun(value);
                 OnPropertyChenaged("v_active");
             }
         }
 
         public string v_back
         {
-            get { return Change.vback; }
+            get { return Change.vBack; }
             set
             {
-                Change.vback = AcsllRetrun(value);
+                Change.vBack = AcsllRetrun(value);
                 OnPropertyChenaged("v_back");
             }
         }
@@ -273,21 +273,21 @@ namespace Real.ViewModel
             try
             {
                 double clock = Convert.ToDouble(Change.pi);
-                int p = Convert.ToInt32(Change.hsyns) + Convert.ToInt32(Change.hback) + Convert.ToInt32(Change.hactive) + Convert.ToInt32(Change.hfront);
-                int i = Convert.ToInt32(Change.vsyns) + Convert.ToInt32(Change.vback) + Convert.ToInt32(Change.vactive) + Convert.ToInt32(Change.vfront);
+                int p = Convert.ToInt32(Change.hSyns) + Convert.ToInt32(Change.hBack) + Convert.ToInt32(Change.hActive) + Convert.ToInt32(Change.hFront);
+                int i = Convert.ToInt32(Change.vSyns) + Convert.ToInt32(Change.vBack) + Convert.ToInt32(Change.vActive) + Convert.ToInt32(Change.vFront);
 
                 if ((p * i * clock) == 0)
-                    Change.vactive = null;
+                    Change.vActive = null;
 
                 resoution piclock = new resoution((int)(p * i * clock) / 10000, "P");
-                resoution h_syns = new resoution(Convert.ToInt32(Change.hsyns), "H");
-                resoution h_back = new resoution(Convert.ToInt32(Change.hback) + Convert.ToInt32(Change.hsyns) + Convert.ToInt32(Change.hfront));
-                resoution h_active = new resoution(Convert.ToInt32(Change.hactive));
-                resoution h_front = new resoution(Convert.ToInt32(Change.hfront), "H");
-                resoution v_syns = new resoution(Convert.ToInt32(Change.vsyns), "V");
-                resoution v_back = new resoution(Convert.ToInt32(Change.vback) + Convert.ToInt32(Change.vsyns) + Convert.ToInt32(Change.vfront));
-                resoution v_active = new resoution(Convert.ToInt32(Change.vactive));
-                resoution v_front = new resoution(Convert.ToInt32(Change.vfront), "V");
+                resoution h_syns = new resoution(Convert.ToInt32(Change.hSyns), "H");
+                resoution h_back = new resoution(Convert.ToInt32(Change.hBack) + Convert.ToInt32(Change.hSyns) + Convert.ToInt32(Change.hFront));
+                resoution h_active = new resoution(Convert.ToInt32(Change.hActive));
+                resoution h_front = new resoution(Convert.ToInt32(Change.hFront), "H");
+                resoution v_syns = new resoution(Convert.ToInt32(Change.vSyns), "V");
+                resoution v_back = new resoution(Convert.ToInt32(Change.vBack) + Convert.ToInt32(Change.vSyns) + Convert.ToInt32(Change.vFront));
+                resoution v_active = new resoution(Convert.ToInt32(Change.vActive));
+                resoution v_front = new resoution(Convert.ToInt32(Change.vFront), "V");
 
                 char h = Convert.ToChar(Convert.ToString(Convert.ToInt32(h_front.sf + h_syns.sf, 2), 16));
                 char v = Convert.ToChar(Convert.ToString(Convert.ToInt32(v_front.sf + v_syns.sf, 2), 16));

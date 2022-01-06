@@ -24,10 +24,7 @@ namespace Real.Model
         public bool Plushex { get; set; }
         /////////////
         /////////////read Model
-        public List<monitor> m
-        {
-            get { return monitor.Monitor(); }
-        }
+        public List<monitor> M { get; set; }
 
         public int indexmonitor { get; set; }
 
@@ -38,43 +35,43 @@ namespace Real.Model
         /// <summary>
         /// //////////change Mdoel
         /// </summary>
-        public string hsyns { get; set; }
+        public string hSyns { get; set; }
 
-        public string hfront { get; set; }
+        public string hFront { get; set; }
 
-        public string hactive { get; set; }
+        public string hActive { get; set; }
 
-        public string hback { get; set; }
+        public string hBack { get; set; }
 
-        public string vsyns { get; set; }
+        public string vSyns { get; set; }
 
-        public string vfront { get; set; }
+        public string vFront { get; set; }
 
-        public string vactive { get; set; }
+        public string vActive { get; set; }
 
-        public string vback { get; set; }
+        public string vBack { get; set; }
 
         public string pi { get; set; }
 
         public int index { get; set; }
 
-        public ICommand changeedid { get; set; }
+        public ICommand changeEdid { get; set; }
         ////////////
         ////////////NameChange Model
-        public string aname { get; set; }
+        public string aName { get; set; }
 
-        public ICommand changename { get; set; }
+        public ICommand changeName { get; set; }
         ////////////
         ////////////write Model
-        public ICommand writeparser { get; set; }
+        public ICommand writeParser { get; set; }
 
-        public string parsername { get; set; }
+        public string parserName { get; set; }
 
         public bool? txt { get; set; }
 
         public bool? bin { get; set; }
 
-        public ICommand savefile { get; set; }
+        public ICommand saveFile { get; set; }
         ////////////
     }
 }
