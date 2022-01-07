@@ -59,28 +59,19 @@ namespace Real
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            if (ChangeEdid.dtd > 0)
-            {
+
                 NavigationService.Navigate
                 (
                     new Uri("VIew/change.xaml", UriKind.Relative)
                 );
-            }
-            else
-                System.Windows.MessageBox.Show("DTB does not exist");
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            if (ChangeEdid.dess != "")
-            {
                 NavigationService.Navigate
                 (
                     new Uri("VIew/Namechange.xaml", UriKind.Relative)
                 );
-            }
-            else
-                System.Windows.MessageBox.Show("The name specified in the descriptor does not exist");
         }
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\bin\Debug\EDIDPaser.dll
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\bin\Debug\EDIDPaser.pdb
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\UserControl1.g.cs
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser_MarkupCompile.cache
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser_MarkupCompile.lref
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\UserControl1.baml
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser.g.resources
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser.Properties.Resources.resources
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser.csproj.GenerateResource.cache
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser.csproj.CoreCompileInputs.cache
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser.dll
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\EDIDPaser\obj\Debug\EDIDPaser.pdb

@@ -30,3 +30,6 @@ C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\View\menu.baml
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\View\Namechange.baml
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\View\reaed.baml
 C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\View\write.baml
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\bin\Debug\ClassLibrary1.dll
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\bin\Debug\ClassLibrary1.pdb
+C:\Users\dlee.RAON-TECH\test\arirnag\start\Real\Real\obj\Debug\GeneratedInternalTypeHelper.g.cs

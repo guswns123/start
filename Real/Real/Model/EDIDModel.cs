@@ -19,9 +19,15 @@ namespace Real.Model
 
         public string parser { get; set; }
 
-        public bool Plusdot { get; set; }
+        public bool plusDot { get; set; }
 
-        public bool Plushex { get; set; }
+        public bool plusHex { get; set; }
+
+        public bool reVisibility { get; set; }
+
+        public bool nameVisibility { get; set; }
+
+        public bool saveVisibility { get; set; }
         /////////////
         /////////////read Model
         public List<monitor> M { get; set; }

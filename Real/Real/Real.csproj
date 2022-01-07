@@ -100,8 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="EDIDParser.cs" />
-    <Compile Include="Etc.cs" />
+    <Compile Include="VisbilityConverter.cs" />
     <Compile Include="Model\EDIDModel.cs" />
     <Compile Include="ViewModel\NameChangeViewModel.cs" />
     <Compile Include="ViewModel\changeViewModel.cs" />
@@ -201,6 +200,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="EDIDIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\EDIDPaser.csproj">
+      <Project>{d599eb92-d682-45b0-9ca7-9e2dcac6eb60}</Project>
+      <Name>EDIDPaser</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

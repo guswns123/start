@@ -12,17 +12,26 @@ namespace Real.ViewModel
     class monitor
     {
         public monitor() { }
+
         public monitor(string name) { this.Name = name; }
+
         public string Name { set; get; }
-        public static List<monitor> Monitor()
+
+        private string[] monitorName = new string[20];
+
+        private int monitorCount = 0;
+
+        public string[] monitorValue = new string[5];
+
+        public List<monitor> Monitor()
         {
             var mc = new System.Management.ManagementClass(string.Format(@"\\{0}\root\wmi:WmiMonitorDescriptorMethods", Environment.MachineName));
             foreach (ManagementObject mo in mc.GetInstances()) //Do this for each connected monitor
             {
                 string[] split = mo.GetPropertyValue("InstanceName").ToString().Split(
                     new string[] { "\\" }, StringSplitOptions.None);
-                ChangeEdid.proprety[ChangeEdid.countm] = split[1];
-                ChangeEdid.countm++;
+                monitorName[monitorCount] = split[1];
+                monitorCount++;
                 for (int i = 0; i < 256; i++)
                 {
 
@@ -42,11 +51,11 @@ namespace Real.ViewModel
                             for (int k = 0; k < readbtye.Length; k++)
                             {
                                 if (readbtye[k] > 15)
-                                    ChangeEdid.read[ChangeEdid.countm - 1] += readbtye[k].ToString("X") + " ";
+                                    monitorValue[monitorCount - 1] += readbtye[k].ToString("X") + " ";
                                 else
-                                    ChangeEdid.read[ChangeEdid.countm - 1] += "0" + readbtye[k].ToString("X") + " ";
+                                    monitorValue[monitorCount - 1] += "0" + readbtye[k].ToString("X") + " ";
                                 if ((k % 16) == 15)
-                                    ChangeEdid.read[ChangeEdid.countm - 1] += "\r";
+                                    monitorValue[monitorCount - 1] += "\r";
                             }
                         }
                     }
@@ -58,7 +67,7 @@ namespace Real.ViewModel
                 }
             }
             List<monitor> m = new List<monitor>();
-            foreach (string mo in ChangeEdid.proprety)
+            foreach (string mo in monitorName)
             {
                 if (mo == null)
                     break;
@@ -70,9 +79,10 @@ namespace Real.ViewModel
     class readViewModel : Notifier
     {
         EDIDModel read = new EDIDModel();
+        monitor monitors = new monitor();
         public readViewModel()
         {
-            read.M = monitor.Monitor();
+            read.M = monitors.Monitor();
         }
         public List<monitor> ListMonitor
         { 
@@ -98,7 +108,7 @@ namespace Real.ViewModel
 
         void OnIndexChanged()
         {
-            ReadEdid = ChangeEdid.read[read.indexmonitor];
+            ReadEdid = monitors.monitorValue[read.indexmonitor];
         }
         public string ReadEdid
         {
@@ -117,7 +127,7 @@ namespace Real.ViewModel
         }
         void selected()
         {
-            Global.EDID = read.readedid;
+            Global.EDID = ReadEdid;
         }
 
 

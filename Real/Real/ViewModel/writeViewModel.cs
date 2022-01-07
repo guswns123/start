@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Real.Model;
 using EDIDParser;
+using System.IO;
+
 namespace Real.ViewModel
 {
     class writeViewModel : Notifier
@@ -27,10 +29,14 @@ namespace Real.ViewModel
         }
         void PATH()
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true; 
-            dialog.ShowDialog();
-            PathName = dialog.FileName;
+            try
+            {
+                CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+                dialog.IsFolderPicker = true;
+                dialog.ShowDialog();
+                PathName = dialog.FileName;
+            }
+            catch { }
         }
         public string PathName
         {
@@ -72,14 +78,55 @@ namespace Real.ViewModel
             if (write.txt == true || write.bin == true)
             {
                 string p = write.parserName + "\\" + FileName;
-                FileRoad fileroad = new FileRoad(write.txt, write.bin, p, Global.EDID);
+                FileWrite(write.txt, write.bin, p, Global.EDID);
                 Global.WirteFlag = "ON";
             }
             else
                 System.Windows.MessageBox.Show("Don't Select File Extension");
         }
 
-
+        private void FileWrite(bool? Txt, bool? Bin, string path, string edid)
+        {
+            try
+            {
+                if (Txt == true)
+                {
+                    path += ".txt";
+                    if (File.Exists(path) == true)
+                    {
+                        System.Windows.MessageBox.Show("A file with the same name exists in the specified path.");
+                        path = "";
+                    }
+                    System.IO.File.WriteAllText(path, edid, Encoding.Default);
+                }
+                else if (Bin == true)
+                {
+                    path += ".bin";
+                    if (File.Exists(path))
+                    {
+                        System.Windows.MessageBox.Show("A file with the same name exists in the specified path.");
+                        path = "";
+                    }
+                    else
+                    {
+                        sort sort = new sort(edid);
+                        FileStream fs = File.Open(path, FileMode.Create);
+                        using (BinaryWriter wr = new BinaryWriter(fs, Encoding.UTF7))
+                        {
+                            for (int i = 0; i < sort.strr.Length; i = i + 2)
+                            {
+                                wr.Write(Convert.ToByte(sort.strr.Substring(i, 2), 16));
+                            }
+                        }
+                    }
+                }
+                System.Windows.MessageBox.Show("save file success.");
+            }
+            catch
+            {
+                System.Windows.MessageBox.Show("save file failing.");
+            }
+        }
 
 
     }

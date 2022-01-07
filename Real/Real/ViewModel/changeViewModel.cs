@@ -118,21 +118,14 @@ namespace Real.ViewModel
         {
             string OnlyNumber = "";
             byte[] acsll = Encoding.ASCII.GetBytes(value);
-            try
+            if (value != "")
             {
-                if (48 <= acsll[acsll.Length - 1] && acsll[acsll.Length - 1] <= 57)
+                if ((48 <= acsll[acsll.Length - 1] && acsll[acsll.Length - 1] <= 57) || acsll[acsll.Length - 1] == 46)
                     OnlyNumber = value;
                 else
                     OnlyNumber = value.Remove(value.Length - 1, 1);
             }
-            catch
-            {
-                if (value == "")
-                {
-                    OnlyNumber = value;
-                }
-            }
-            return OnlyNumber;
+           return OnlyNumber;
         }
 
         public string h_syns
@@ -257,7 +250,6 @@ namespace Real.ViewModel
             PI = piclock.ToString();
         }
 
-        sort sort = new sort(Global.EDID);
 
         ICommand changeedid;
 
@@ -269,6 +261,7 @@ namespace Real.ViewModel
 
         void changed()
         {
+            sort sort = new sort(Global.EDID);
             char[] arr16 = sort.strc;
             try
             {
@@ -320,9 +313,7 @@ namespace Real.ViewModel
                 arr16[ChangeEdid.index[Change.index] + 22] = h;
                 arr16[ChangeEdid.index[Change.index] + 23] = v;
 
-                string edidc = "";
-                foreach (char c in arr16)
-                    edidc += c;
+                string edidc = new string(arr16);
                 CheckSums checksums = new CheckSums(edidc);
                 edidc = checksums.SortsStr;
                 Global.EDID = edidc;
