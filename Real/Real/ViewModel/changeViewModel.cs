@@ -6,98 +6,16 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EDIDParser;
 using Real.Model;
+
+
 namespace Real.ViewModel
 {
-    class resoution
-    {
-        public char ms_ms = ' ';
-        public char ms = ' ';
-        public char ls_m = ' ';
-        public char ls_l = ' ';
-        public string sf = "";
-        public int flag;
-        public resoution(int value)
-        {
-            string str = Convert.ToString(value, 2);
-            if (str.Length <= 12)
-            {
-                for (int i = str.Length; i < 12; i++)
-                    str = "0" + str;
-                string m = Convert.ToString(Convert.ToInt32(str.Substring(0, 4), 2), 16);
-                string l_m = Convert.ToString(Convert.ToInt32(str.Substring(4, 4), 2), 16);
-                string l_l = Convert.ToString(Convert.ToInt32(str.Substring(8, 4), 2), 16);
-                ms = Convert.ToChar(m);
-                ls_m = Convert.ToChar(l_m);
-                ls_l = Convert.ToChar(l_l);
-            }
-            else
-            {
-                flag = 1;
-                System.Windows.MessageBox.Show("Value Range Exceeded.");
-            }
-        }
-        public resoution(int value, string b)
-        {
-            string str = Convert.ToString(value, 2);
-            if (b == "H")
-            {
-                if (str.Length <= 10)
-                {
-                    for (int i = str.Length; i < 10; i++)
-                        str = "0" + str;
-                    string l_m = Convert.ToString(Convert.ToInt32(str.Substring(2, 4), 2), 16);
-                    string l_l = Convert.ToString(Convert.ToInt32(str.Substring(6, 4), 2), 16);
-                    ls_m = Convert.ToChar(l_m);
-                    ls_l = Convert.ToChar(l_l);
-                    sf = str.Substring(0, 2);
-                }
-                else
-                {
-                    flag = 1;
-                    System.Windows.MessageBox.Show("Value Range Exceeded.");
-                }
-            }
-            else if (b == "V")
-            {
-                if (str.Length <= 6)
-                {
-                    for (int i = str.Length; i < 6; i++)
-                        str = "0" + str;
-                    string l_l = Convert.ToString(Convert.ToInt32(str.Substring(2, 4), 2), 16);
-                    ls_l = Convert.ToChar(l_l);
-                    sf = str.Substring(0, 2);
-                }
-                else
-                {
-                    flag = 1;
-                    System.Windows.MessageBox.Show("Value Range Exceeded.");
-                }
-            }
-            else if (b == "P")
-            {
-                if (str.Length <= 16)
-                {
-                    for (int i = str.Length; i < 16; i++)
-                        str = "0" + str;
-                    string m_m = Convert.ToString(Convert.ToInt32(str.Substring(0, 4), 2), 16);
-                    string m = Convert.ToString(Convert.ToInt32(str.Substring(4, 4), 2), 16);
-                    string l_m = Convert.ToString(Convert.ToInt32(str.Substring(8, 4), 2), 16);
-                    string l_l = Convert.ToString(Convert.ToInt32(str.Substring(12, 4), 2), 16);
-                    ms_ms = Convert.ToChar(m_m);
-                    ms = Convert.ToChar(m);
-                    ls_m = Convert.ToChar(l_m);
-                    ls_l = Convert.ToChar(l_l);
-                }
-                else
-                {
-                    flag = 1;
-                    System.Windows.MessageBox.Show("Value Range Exceeded.");
-                }
-            }
-        }
-    }
+
     class changeViewModel : Notifier
     {
+
+        sort sort = new sort();
+
         EDIDModel Change = new EDIDModel();
 
         List<string> DTB = new List<string>(new string[ChangeEdid.dtd]);
@@ -261,7 +179,8 @@ namespace Real.ViewModel
 
         void changed()
         {
-            sort sort = new sort(Global.EDID);
+
+            sort.Sort(Global.EDID);
             char[] arr16 = sort.strc;
             try
             {
@@ -286,7 +205,10 @@ namespace Real.ViewModel
                 char v = Convert.ToChar(Convert.ToString(Convert.ToInt32(v_front.sf + v_syns.sf, 2), 16));
 
                 if (piclock.flag + h_active.flag + h_back.flag + h_front.flag + h_syns.flag + v_active.flag + v_back.flag + v_front.flag + v_syns.flag >= 1)
+                {
+                    System.Windows.MessageBox.Show("Value Range Exceeded.");
                     goto jump;
+                }
 
                 arr16[ChangeEdid.index[Change.index]] = piclock.ls_m;
                 arr16[ChangeEdid.index[Change.index] + 1] = piclock.ls_l;

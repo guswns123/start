@@ -8,47 +8,11 @@ using Real.Model;
 using EDIDParser;
 namespace Real.ViewModel
 {
-    class Namechanger
-    {
-        public string edidcn = "";
-        int count = 0;
-        public Namechanger(char[] arr16, byte[] arr_byteStr)
-        {
-            string[] result = new string[arr_byteStr.Length];
-            char[] arr = new char[arr_byteStr.Length * 2];
-            for (int i = 0; i < arr_byteStr.Length; i++)
-            {
-                result[i] = string.Format("{0:X2}", arr_byteStr[i]);
-                arr[i * 2] = Convert.ToChar(result[i].Substring(0, 1));
-                arr[(i * 2) + 1] = Convert.ToChar(result[i].Substring(1, 1));
-            }
-            for (int j = 0; j < ChangeEdid.des; j++)
-            {
-                for (int i = 10; i < 36; i++)
-                {
-                    try
-                    {
-                        arr16[ChangeEdid.de[j] + i] = arr[i - 10 + (j * 38)];
-                    }
-                    catch
-                    {
-                        count++;
-                        if (count == 1)
-                            arr16[ChangeEdid.de[j] + i] = 'A';
-                        else if (count % 2 == 1)
-                            arr16[ChangeEdid.de[j] + i] = '2';
-                        else if (count % 2 == 0)
-                            arr16[ChangeEdid.de[j] + i] = '0';
-
-                    }
-                }
-            }
-            foreach (char c in arr16)
-                edidcn += c;
-        }
-    }
     class NameChangeViewModel : Notifier
     {
+
+        sort sort = new sort();
+
         EDIDModel NameChange = new EDIDModel();
 
         public string BName
@@ -75,7 +39,7 @@ namespace Real.ViewModel
         {
             try
             {
-                sort sort = new sort(Global.EDID);
+                sort.Sort(Global.EDID);
                 char[] arr16 = sort.strc;
                 if (NameChange.aName.Length > 13)
                 {

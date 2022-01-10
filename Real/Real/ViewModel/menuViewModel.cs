@@ -19,7 +19,8 @@ namespace Real.ViewModel
     public class menuViewModel : Notifier
     {
         EDIDModel menu = new EDIDModel();
-        BackgroundWorker paser = new BackgroundWorker();
+
+        sort sort = new sort();
 
         public menuViewModel()
         {
@@ -27,18 +28,6 @@ namespace Real.ViewModel
                 Global.EDID = "";
             if (Global.EDID != null && Global.EDID != "") 
                  Edid = Global.EDID;
-            paser.DoWork += new DoWorkEventHandler(Pasing);
-
-        }
-
-
-        private void Pasing(object sender, DoWorkEventArgs e)
-        {
-            Initialization initialization = new Initialization();
-            EdidParser edidPath = new EdidParser(Edid);
-            Path = edidPath.Pather;
-            ButtonVisibility();
-            Global.EDID = menu.edid;
         }
 
         public ICommand BtnFile
@@ -50,8 +39,8 @@ namespace Real.ViewModel
         {
             try
             {                    
-                sort fileSort = new sort(FileRoad());
-                Edid = fileSort.str;
+                sort.Sort(FileRoad());
+                Edid = sort.str;
             }
             catch
             {
@@ -64,13 +53,25 @@ namespace Real.ViewModel
             get { return menu.edid; }
             set
             {
-                    menu.sorts = value;
-                    CheckSums checkSums = new CheckSums(menu.sorts);
-                    menu.edid = checkSums.SortsStr;
-                    OnPropertyChenaged("Edid");
-                    paser.RunWorkerAsync();
+                menu.sorts = value;
+                menu.sorts = PlusString(menu.sorts);
+                CheckSums checkSums = new CheckSums(menu.sorts);
+                menu.edid = checkSums.SortsStr;
+                OnPropertyChenaged("Edid");
+                OnPathChanged();
             }
+
         }
+
+        private void OnPathChanged()
+        {
+            Initialization initialization = new Initialization();
+            EdidParser edidPath = new EdidParser(Edid);
+            Path = edidPath.Pather;
+            ButtonVisibility();
+            Global.EDID = menu.edid;
+        }
+
         public string Path
         {
             get { return menu.parser; }
@@ -103,7 +104,7 @@ namespace Real.ViewModel
             set
             {
                 menu.plusHex = value;
-                Edid = PlusString(Edid);
+                Edid = Edid;
             }
         }
         public bool PlusDot
@@ -112,7 +113,7 @@ namespace Real.ViewModel
             set
             {
                 menu.plusDot = value;
-                Edid = PlusString(Edid);
+                Edid = Edid;
             }
         }
 
@@ -121,28 +122,33 @@ namespace Real.ViewModel
         {
             int count = 0;
             string str = "";
+            args = args.Replace("0X","");
+            args = args.Replace(",","");
             args = args.Replace("\r", " ");
             string[] arraystr = args.Split(' ');
-            foreach(string s in arraystr)
+            if (PlusDot == true || PlusHex == true)
             {
-                count++;
-                if (s != "")
+                foreach (string s in arraystr)
                 {
-                    if (PlusHex == true)
-                        str += "0x";
-                    str += s;
-                    if (PlusDot == true && count != arraystr.Length - 1)
-                        str += ",";
+                    count++;
+                    if (s != "")
+                    {
+                        if (PlusHex == true)
+                            str += "0x";
+                        str += s;
+                        if (PlusDot == true && count != arraystr.Length - 1)
+                            str += ",";
 
-                    if (count % 16 == 0 && count != 0)
-                        str = str + "\r";
-                    else
-                        str = str + " ";
+                        if (count % 16 == 0 && count != 0)
+                            str = str + "\r";
+                        else
+                            str = str + " ";
+                    }
                 }
+                return str;
             }
-
-            
-            return str;
+            else
+                return args;
 
         }
 

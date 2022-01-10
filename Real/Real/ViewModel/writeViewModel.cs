@@ -13,6 +13,8 @@ namespace Real.ViewModel
 {
     class writeViewModel : Notifier
     {
+        sort sort = new sort();
+
         public writeViewModel()
         {
             FileName = "EDID";
@@ -70,10 +72,10 @@ namespace Real.ViewModel
         }
         public ICommand SaveFile
         {
-            get { return (this.write.saveFile) ?? (this.write.saveFile = new DelegateCommand(savefiles)); }
+            get { return (this.write.saveFile) ?? (this.write.saveFile = new DelegateCommand(saveFiles)); }
 
         }
-        void savefiles()
+        void saveFiles()
         {
             if (write.txt == true || write.bin == true)
             {
@@ -109,7 +111,7 @@ namespace Real.ViewModel
                     }
                     else
                     {
-                        sort sort = new sort(edid);
+                        sort.Sort(edid);
                         FileStream fs = File.Open(path, FileMode.Create);
                         using (BinaryWriter wr = new BinaryWriter(fs, Encoding.UTF7))
                         {

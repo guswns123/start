@@ -5,12 +5,100 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Input;
 using EDIDParser;
+using System.Windows;
 namespace Real
 {
+
+    public class resoution
+    {
+        public char ms_ms = ' ';
+        public char ms = ' ';
+        public char ls_m = ' ';
+        public char ls_l = ' ';
+        public string sf = "";
+        public int flag;
+        public resoution(int value)
+        {
+            string str = Convert.ToString(value, 2);
+            if (str.Length <= 12)
+            {
+                for (int i = str.Length; i < 12; i++)
+                    str = "0" + str;
+                string m = Convert.ToString(Convert.ToInt32(str.Substring(0, 4), 2), 16);
+                string l_m = Convert.ToString(Convert.ToInt32(str.Substring(4, 4), 2), 16);
+                string l_l = Convert.ToString(Convert.ToInt32(str.Substring(8, 4), 2), 16);
+                ms = Convert.ToChar(m);
+                ls_m = Convert.ToChar(l_m);
+                ls_l = Convert.ToChar(l_l);
+            }
+            else
+            {
+                flag = 1;
+            }
+        }
+        public resoution(int value, string b)
+        {
+            string str = Convert.ToString(value, 2);
+            if (b == "H")
+            {
+                if (str.Length <= 10)
+                {
+                    for (int i = str.Length; i < 10; i++)
+                        str = "0" + str;
+                    string l_m = Convert.ToString(Convert.ToInt32(str.Substring(2, 4), 2), 16);
+                    string l_l = Convert.ToString(Convert.ToInt32(str.Substring(6, 4), 2), 16);
+                    ls_m = Convert.ToChar(l_m);
+                    ls_l = Convert.ToChar(l_l);
+                    sf = str.Substring(0, 2);
+                }
+                else
+                {
+                    flag = 1;
+                }
+            }
+            else if (b == "V")
+            {
+                if (str.Length <= 6)
+                {
+                    for (int i = str.Length; i < 6; i++)
+                        str = "0" + str;
+                    string l_l = Convert.ToString(Convert.ToInt32(str.Substring(2, 4), 2), 16);
+                    ls_l = Convert.ToChar(l_l);
+                    sf = str.Substring(0, 2);
+                }
+                else
+                {
+                    flag = 1;
+                }
+            }
+            else if (b == "P")
+            {
+                if (str.Length <= 16)
+                {
+                    for (int i = str.Length; i < 16; i++)
+                        str = "0" + str;
+                    string m_m = Convert.ToString(Convert.ToInt32(str.Substring(0, 4), 2), 16);
+                    string m = Convert.ToString(Convert.ToInt32(str.Substring(4, 4), 2), 16);
+                    string l_m = Convert.ToString(Convert.ToInt32(str.Substring(8, 4), 2), 16);
+                    string l_l = Convert.ToString(Convert.ToInt32(str.Substring(12, 4), 2), 16);
+                    ms_ms = Convert.ToChar(m_m);
+                    ms = Convert.ToChar(m);
+                    ls_m = Convert.ToChar(l_m);
+                    ls_l = Convert.ToChar(l_l);
+                }
+                else
+                {
+                    flag = 1;
+                    
+                }
+            }
+        }
+    }
+
     public class CheckSums : converter
     {
         public string SortsStr;
-        public string strs;
+        string strs;
         long checksum = 0;
         long checksum1 = 0;
         long che = 0;
@@ -19,8 +107,9 @@ namespace Real
         {
             if (strss == null)
                 return;
-            sort sort = new sort(strss);
-            strss = sort.strr.Trim();
+            sort sort = new sort();
+            sort.Sort(strss);
+            strss = sort.str2.Trim();
             int e1 = strss.Length;
             strs = strss;
             for (int j = 0; j < e1; j = j + 256)
@@ -42,10 +131,12 @@ namespace Real
                 strs = strs.Remove((254 + j), 2);
                 strs = strs.Insert((254 + j), chec);
             }
-            sort check = new sort(strs);
+            sort check = new sort();
+            check.Sort(strs);
             SortsStr = check.str;
         }
     }
+
     public class Notifier : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,6 +146,7 @@ namespace Real
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
+
     public class DelegateCommand : ICommand
     {
         private readonly Func<bool> canExecute;
@@ -93,6 +185,7 @@ namespace Real
             }
         }
     }
+
     public class FileRoad
     {
         public string arr = "";
@@ -136,6 +229,48 @@ namespace Real
             catch
             {
             }
+        }
+    }
+
+    public class Namechanger
+    {
+        public string edidcn = "";
+        int count = 0;
+        public char[] name = new char[36];
+        public Namechanger(char[] arr16, byte[] arr_byteStr)
+        {
+            string[] result = new string[arr_byteStr.Length];
+            char[] arr = new char[arr_byteStr.Length * 2];
+            for (int i = 0; i < arr_byteStr.Length; i++)
+            {
+                result[i] = string.Format("{0:X2}", arr_byteStr[i]);
+                arr[i * 2] = Convert.ToChar(result[i].Substring(0, 1));
+                arr[(i * 2) + 1] = Convert.ToChar(result[i].Substring(1, 1));               
+            }
+            for (int j = 0; j < ChangeEdid.des; j++)
+            {
+                for (int i = 10; i < 36; i++)
+                {
+                    try
+                    {
+                        arr16[ChangeEdid.de[j] + i] = arr[i - 10 + (j * 38)];
+                    }
+                    catch
+                    {
+                        count++;
+                        if (count == 1)
+                            arr16[ChangeEdid.de[j] + i] = 'A';
+                        else if (count % 2 == 1)
+                            arr16[ChangeEdid.de[j] + i] = '2';
+                        else if (count % 2 == 0)
+                            arr16[ChangeEdid.de[j] + i] = '0';
+
+                    }
+                }
+            }
+            name = arr;
+            foreach (char c in arr16)
+                edidcn += c;
         }
     }
 }

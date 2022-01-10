@@ -28,24 +28,27 @@ namespace EDIDParser
         public char[] strc;
         public string str;
         public string strr;
-        public sort(string str1)
+        public string str2 = "";
+        public void Sort(string str1)
         {
             try
             {
                 str1 = (str1.Replace(Environment.NewLine, "")).ToUpper();
-            str1 = (str1.Replace("\r", "")).ToUpper();
-            str1 = str1.Replace(" ", "");
-            strr = str1;
-            strc = str1.ToCharArray();
-            foreach (char c in strc)
-            {
-                count++;
-                str = str + c;
-                if (count % 2 == 0 && count != 0 && count % 32 != 0)
-                    str = str + " ";
-                if (count % 32 == 0)
-                 str = str + "\r";
-            }
+                str1 = (str1.Replace("\r", "")).ToUpper();
+                str1 = str1.Replace(" ", "");
+                str2 = str1.Replace("0X", "");
+                str2 = str2.Replace(",", "");
+                strr = str1;
+                strc = str2.ToCharArray();
+                foreach (char c in strc)
+                {
+                    count++;
+                    str = str + c;
+                    if (count % 2 == 0 && count != 0 && count % 32 != 0)
+                        str = str + " ";
+                    if (count % 32 == 0 && count != strc.Length)
+                        str = str + "\r";
+                };
             }
             catch
             { }
@@ -58,7 +61,8 @@ namespace EDIDParser
         public int[] imformation10 = new int[128];
         public converter(string strss)
         {
-            sort con = new sort(strss);
+            sort con = new sort();
+            con.Sort(strss);
             imformation16 = con.strc;
             if(imformation10.Length != imformation16.Length)
             {
@@ -83,8 +87,9 @@ namespace EDIDParser
         public string Pather = "";
         public EdidParser(string strss) : base(strss)
         {
-            sort sort = new sort(strss);
-            if (sort.strr.Length % 128 == 0 && sort.strr.Length != 0)
+            sort sort = new sort();
+            sort.Sort(strss);
+            if (sort.str2.Length % 128 == 0 && sort.str2.Length != 0)
             {
                 Initialization inti = new Initialization();
                 Pather = Header();
@@ -113,8 +118,6 @@ namespace EDIDParser
             string productname = "";                                                                     // 제품명 이름 표기 해야함
             string realname = "";                                                                        // 제조사 이름 표기 해야함
             string[] temporaryname = new string[3];
-
-
 
             string name = (imformation2[16] + imformation2[17] + imformation2[18] + imformation2[19]).Remove(0, 1);
 
@@ -480,7 +483,7 @@ namespace EDIDParser
                             {
                                 ChangeEdid.des++;
                                 ChangeEdid.de[ChangeEdid.des - 1] = 108 + (i * Constants.m) + p;
-                                ChangeEdid.dess += Description[i, 0] + " ";
+                                ChangeEdid.dess += Description[i, 0];
                             }
                             catch { }
                             Description[i, 0] = "Display name : " + Description[i, 0];
