@@ -33,7 +33,7 @@ namespace EDIDParser
         {
             try
             {
-                str1 = (str1.Replace(Environment.NewLine, "")).ToUpper();
+                str1 = (str1.Replace(Environment.NewLine, ""));
                 str1 = (str1.Replace("\r", "")).ToUpper();
                 str1 = str1.Replace(" ", "");
                 str2 = str1.Replace("0X", "");

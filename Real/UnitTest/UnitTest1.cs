@@ -10,7 +10,6 @@ namespace UnitTest
     public class Test
     {
 
-
         #region
         private string _testEdid = "00 FF FF FF FF FF FF 00 42 4C 00 50 8A 13 00 00\r06 17 01 03 0E 20 14 78 6F EE 91 A3 54 4C 99 26\r0F 50 54 21 08 00 81 80 81 40 81 00 90 40 95 00\rA9 40 B3 00 D1 00 63 7B 40 00 B0 08 1C 70 00 00\r00 00 00 00 00 00 00 1E 00 00 00 FD 00 18 FA 05\rFA FA 00 0A 20 20 20 20 20 20 00 00 00 FC 00 50\r61 72 61 6C 6C 65 6C 73 20 56 75 0A 00 00 00 10\r00 50 61 72 61 6C 6C 65 6C 73 0A 0A 0A 0A 00 14";
 
@@ -23,8 +22,6 @@ namespace UnitTest
         private int _testClock = 1340000;
 
         sort sort = new sort();
-
-        ASCIIEncoding aSCIIEncoding = new ASCIIEncoding();
 
         #endregion 
 
@@ -40,6 +37,18 @@ namespace UnitTest
         {
             EdidParser parser = new EdidParser(_testEdid);
 
+            byte[] _testNameByte = Encoding.Default.GetBytes(_testName);
+
+            sort.Sort(_testEdid);
+
+            char[] _testEdidChar = sort.strc;
+
+            Namechanger namechanger = new Namechanger(_testEdidChar, _testNameByte);
+
+            CheckSums check = new CheckSums(namechanger.edidcn);
+
+            Assert.AreEqual(check.SortsStr, _testEdid);
+
             Assert.AreEqual(ChangeEdid.dtd, _testDTBCount);
 
             Assert.AreEqual(ChangeEdid.dess, _testName);
@@ -52,19 +61,10 @@ namespace UnitTest
 
             int[] arr10 = new int[25]; 
 
-            byte[] _testNameByte = Encoding.Default.GetBytes(_testName);
-
-            char[] _testEdidChar = (_testEdid.Replace("\r", " ")).ToCharArray();
-
             int[,] _testresoltions = new int[2, 4];
 
             int _testClocks = new int();
 
-            Namechanger namechanger = new Namechanger(_testEdidChar, _testNameByte);
-
-            CheckSums check = new CheckSums(namechanger.edidcn);
-            
-            //Assert.AreEqual(check.SortsStr, _testEdid);
 
             #region
             resoution piclock = new resoution(_testClock, "P");
