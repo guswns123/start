@@ -96,13 +96,14 @@ namespace Real
     }
 
     public class CheckSums : converter
-    {
+    {    
         public string SortsStr;
         string strs;
         long checksum = 0;
         long checksum1 = 0;
         long che = 0;
         string chec = "";
+
         public CheckSums(string strss) : base(strss)
         {
             if (strss == null)
@@ -257,13 +258,13 @@ namespace Real
                     }
                     catch
                     {
-                        count++;
                         if (count == 1)
                             arr16[ChangeEdid.de[j] + i] = 'A';
                         else if (count % 2 == 1)
                             arr16[ChangeEdid.de[j] + i] = '2';
                         else if (count % 2 == 0)
                             arr16[ChangeEdid.de[j] + i] = '0';
+                        count++;
 
                     }
                 }

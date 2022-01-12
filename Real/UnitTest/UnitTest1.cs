@@ -11,7 +11,14 @@ namespace UnitTest
     {
 
         #region
-        private string _testEdid = "00 FF FF FF FF FF FF 00 42 4C 00 50 8A 13 00 00\r06 17 01 03 0E 20 14 78 6F EE 91 A3 54 4C 99 26\r0F 50 54 21 08 00 81 80 81 40 81 00 90 40 95 00\rA9 40 B3 00 D1 00 63 7B 40 00 B0 08 1C 70 00 00\r00 00 00 00 00 00 00 1E 00 00 00 FD 00 18 FA 05\rFA FA 00 0A 20 20 20 20 20 20 00 00 00 FC 00 50\r61 72 61 6C 6C 65 6C 73 20 56 75 0A 00 00 00 10\r00 50 61 72 61 6C 6C 65 6C 73 0A 0A 0A 0A 00 14";
+        private string _testEdid = @"00 FF FF FF FF FF FF 00 42 4C 00 50 8A 13 00 00\r
+06 17 01 03 0E 20 14 78 6F EE 91 A3 54 4C 99 26\r
+0F 50 54 21 08 00 81 80 81 40 81 00 90 40 95 00\r
+A9 40 B3 00 D1 00 63 7B 40 00 B0 08 1C 70 00 00\r
+00 00 00 00 00 00 00 1E 00 00 00 FD 00 18 FA 05\r
+FA FA 00 0A 20 20 20 20 20 20 00 00 00 FC 00 50\r
+61 72 61 6C 6C 65 6C 73 20 56 75 0A 00 00 00 10\r
+00 50 61 72 61 6C 6C 65 6C 73 0A 0A 0A 0A 00 14";
 
         private string _testName = "Parallels Vu";
 
@@ -28,13 +35,17 @@ namespace UnitTest
         [TestMethod]
         public void CheckSumAndSortAndConverter()
         {
+            _testEdid = _testEdid.Replace("\\r\r\n", " ");
+
             CheckSums sums = new CheckSums(_testEdid);
+
             Assert.AreEqual(sums.SortsStr, _testEdid);
         }
 
         [TestMethod]
         public void Parsaring()
         {
+
             EdidParser parser = new EdidParser(_testEdid);
 
             byte[] _testNameByte = Encoding.Default.GetBytes(_testName);
